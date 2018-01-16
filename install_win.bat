@@ -29,7 +29,16 @@ busybox wget -P ../archives http://repo.msys2.org/msys/i686/xmlto-0.0.28-1-i686.
 busybox wget -P ../archives http://repo.msys2.org/msys/i686/pacman-mirrors-20160112-1-any.pkg.tar.xz
 busybox wget -P ../archives http://repo.msys2.org/msys/i686/msys2-keyring-r9.397a52e-1-any.pkg.tar.xz
 busybox wget -P ../archives http://repo.msys2.org/msys/i686/gnupg-1.4.22-2-i686.pkg.tar.xz
-
+busybox wget -P ../archives http://repo.msys2.org/msys/i686/libcurl-7.49.1-1-i686.pkg.tar.xz
+busybox wget -P ../archives http://repo.msys2.org/msys/i686/msys2-w32api-runtime-5.0.0.4961.e09dd4ca-1-i686.pkg.tar.xz
+busybox wget -P ../archives http://repo.msys2.org/msys/i686/libssh2-1.8.0-1-i686.pkg.tar.xz
+busybox wget -P ../archives http://repo.msys2.org/msys/i686/libcrypt-2.1-1-i686.pkg.tar.xz
+busybox wget -P ../archives http://repo.msys2.org/msys/i686/libopenssl-1.0.2.m-1-i686.pkg.tar.xz
+busybox wget -P ../archives http://repo.msys2.org/msys/i686/libidn-1.33-1-i686.pkg.tar.xz
+busybox wget -P ../archives http://repo.msys2.org/msys/i686/findutils-4.6.0-1-i686.pkg.tar.xz
+busybox wget -P ../archives http://repo.msys2.org/msys/i686/libunistring-0.9.7-2-i686.pkg.tar.xz
+busybox wget -P ../archives http://repo.msys2.org/msys/i686/libutil-linux-2.26.2-1-i686.pkg.tar.xz
+busybox wget -P ../archives http://repo.msys2.org/msys/i686/libgpgme-1.6.0-1-i686.pkg.tar.xz
 
 echo ----------------------------------------
 echo Installing MSYS2 subsystem base...
@@ -58,6 +67,17 @@ busybox tar -xvf ../archives/xmlto-0.0.28-1-i686.pkg.tar.xz
 busybox tar -xvf ../archives/pacman-mirrors-20160112-1-any.pkg.tar.xz
 busybox tar -xvf ../archives/msys2-keyring-r9.397a52e-1-any.pkg.tar.xz
 busybox tar -xvf ../archives/gnupg-1.4.22-2-i686.pkg.tar.xz
+busybox tar -xvf ../archives/libcurl-7.49.1-1-i686.pkg.tar.xz
+busybox tar -xvf ../archives/msys2-w32api-runtime-5.0.0.4961.e09dd4ca-1-i686.pkg.tar.xz
+busybox tar -xvf ../archives/libssh2-1.8.0-1-i686.pkg.tar.xz
+busybox tar -xvf ../archives/libcrypt-2.1-1-i686.pkg.tar.xz
+busybox tar -xvf ../archives/libopenssl-1.0.2.m-1-i686.pkg.tar.xz
+busybox tar -xvf ../archives/libidn-1.33-1-i686.pkg.tar.xz
+busybox tar -xvf ../archives/findutils-4.6.0-1-i686.pkg.tar.xz
+busybox tar -xvf ../archives/libunistring-0.9.7-2-i686.pkg.tar.xz
+busybox tar -xvf ../archives/libutil-linux-2.26.2-1-i686.pkg.tar.xz
+busybox tar -xvf ../archives/libgpgme-1.6.0-1-i686.pkg.tar.xz
+busybox cp ../rebasecore.sh usr/bin/
 
 chdir usr/bin/
 
@@ -68,7 +88,7 @@ echo ----------------------------------------
 echo Updating core package manager..
 echo ----------------------------------------
 
-bash -lc 'pacman -S --force --noconfirm pacman '
+bash -lc 'pacman -S --force --noconfirm pacman'
 
 echo ----------------------------------------
 echo Installing Urus Studio dependencies...
@@ -83,6 +103,17 @@ bash -lc 'pacman -S --force --noconfirm python2'
 bash -lc 'pacman -S --force --noconfirm python2-pip'
 bash -lc 'pip2 install numpy future lxml'
 bash -lc 'cp -f /usr/bin/python2 /usr/bin/python'
+
+echo ----------------------------------------
+echo Rebasing MSYS2 core...
+echo ----------------------------------------
+
+bash -lc 'pacman -S --force --noconfirm rebase'
+bash -lc 'rm ../../dir ../../.BUILDINFO ../../.INSTALL ../../.MTREE ../../.PKGINFO'
+
+chdir ../../
+
+autorebasebase1st.bat
 
 echo ----------------------------------------
 echo Instalation finished!
