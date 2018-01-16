@@ -82,36 +82,25 @@ busybox cp ../rebasecore.sh usr/bin/
 chdir usr/bin/
 
 bash -lc 'pacman-key --init'
-bash -lc 'pacman -Suy'
+bash -lc 'pacman -Sy'
 
 echo ----------------------------------------
-echo Updating core package manager..
-echo ----------------------------------------
-
-bash -lc 'pacman -S --force --noconfirm pacman'
-
-echo ----------------------------------------
+echo Updating core package manager and
 echo Installing Urus Studio dependencies...
 echo ----------------------------------------
 
-bash -lc 'pacman -S --force --noconfirm gcc'
-bash -lc 'pacman -S --force --noconfirm git'
-bash -lc 'pacman -S --force --noconfirm zip'
-bash -lc 'pacman -S --force --noconfirm rsync'
-bash -lc 'pacman -S --force --noconfirm libxml2-devel libxslt-devel'
-bash -lc 'pacman -S --force --noconfirm make'
-bash -lc 'pacman -S --force --noconfirm cmake'
-bash -lc 'pacman -S --force --noconfirm python2'
-bash -lc 'pacman -S --force --noconfirm python2-pip'
+bash -lc 'pacman --force --needed -S --noconfirm pacman gcc git zip rsync libxml2-devel libxslt-devel python2 python2-pip'
 bash -lc 'pip2 install numpy future lxml'
 bash -lc 'cp -f /usr/bin/python2 /usr/bin/python'
+bash -lc 'pacman --needed -S --force --noconfirm make'
+bash -lc 'pacman --needed -S --force --noconfirm cmake'
 
 echo ----------------------------------------
 echo Rebasing MSYS2 core...
 echo ----------------------------------------
 
-bash -lc 'pacman -S --force --noconfirm rebase'
-bash -lc 'rm ../../dir ../../.BUILDINFO ../../.INSTALL ../../.MTREE ../../.PKGINFO'
+bash -lc 'pacman --needed -S --force --noconfirm rebase'
+bash -lc 'rm -f ../../dir ../../.BUILDINFO ../../.INSTALL ../../.MTREE ../../.PKGINFO'
 
 chdir ../../
 
