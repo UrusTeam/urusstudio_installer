@@ -102,10 +102,6 @@ echo ----------------------------------------
 bash -lc 'pacman --needed -S --force --noconfirm rebase'
 bash -lc 'rm -f ../../dir ../../.BUILDINFO ../../.INSTALL ../../.MTREE ../../.PKGINFO'
 
-chdir ../../
-
-autorebasebase1st.bat
-
 echo ----------------------------------------
 echo Instalation finished!
 echo Press any key to exit
