@@ -115,7 +115,7 @@ echo Updating core package manager and
 echo Installing Urus Studio dependencies...
 echo ----------------------------------------
 
-bash -lc 'pacman --force --needed -S --noconfirm pacman wget gcc git gawk zip rsync libxml2-devel libxslt-devel python2 python2-pip'
+bash -lc 'pacman --force --needed -S --noconfirm pacman wget gcc git gawk zip rsync libxml2-devel libxslt-devel python2 python2-pip python2-py'
 bash -lc 'pip2 install numpy future lxml'
 bash -lc 'cp -f /usr/bin/python2 /usr/bin/python'
 bash -lc 'pacman --needed -S --force --noconfirm make'
@@ -139,5 +139,5 @@ echo ----------------------------------------
 echo Instalation finished!
 echo Press any key to exit
 echo ----------------------------------------
-pause >NUL
+pause 10
 exit /B
