@@ -1,5 +1,6 @@
 @echo off
 
+set PATH=%~dp0\system\usr\bin;%PATH%
 chdir system/
 
 echo ----------------------------------------
@@ -39,6 +40,17 @@ busybox wget -P ../archives http://repo.msys2.org/msys/i686/findutils-4.6.0-1-i6
 busybox wget -P ../archives http://repo.msys2.org/msys/i686/libunistring-0.9.7-2-i686.pkg.tar.xz
 busybox wget -P ../archives http://repo.msys2.org/msys/i686/libutil-linux-2.26.2-1-i686.pkg.tar.xz
 busybox wget -P ../archives http://repo.msys2.org/msys/i686/libgpgme-1.6.0-1-i686.pkg.tar.xz
+busybox wget -P ../archives http://repo.msys2.org/msys/i686/dash-0.5.9.1-1-i686.pkg.tar.xz
+busybox wget -P ../archives http://repo.msys2.org/msys/i686/rebase-4.4.2-1-i686.pkg.tar.
+busybox wget -P ../archives http://repo.msys2.org/msys/i686/grep-3.0-1-i686.pkg.tar.xz
+busybox wget -P ../archives http://repo.msys2.org/msys/i686/sed-4.4-2-i686.pkg.tar.xz
+busybox wget -P ../archives http://repo.msys2.org/msys/i686/heimdal-1.5.3-9-i686.pkg.tar.xz
+busybox wget -P ../archives http://repo.msys2.org/msys/i686/heimdal-libs-1.5.3-9-i686.pkg.tar.xz
+busybox wget -P ../archives http://repo.msys2.org/msys/i686/libsqlite-3.8.8.2-1-i686.pkg.tar.xz
+busybox wget -P ../archives http://repo.msys2.org/msys/i686/liblzma-5.2.3-1-i686.pkg.tar.xz
+busybox wget -P ../archives http://repo.msys2.org/msys/i686/icu-59.1-1-i686.pkg.tar.xz
+busybox wget -P ../archives http://repo.msys2.org/msys/i686/util-linux-2.26.2-1-i686.pkg.tar.xz
+busybox wget -P ../archives http://repo.msys2.org/msys/i686/info-6.3-1-i686.pkg.tar.xz
 
 echo ----------------------------------------
 echo Installing MSYS2 subsystem base...
@@ -76,11 +88,25 @@ busybox tar -xvf ../archives/libidn-1.33-1-i686.pkg.tar.xz
 busybox tar -xvf ../archives/findutils-4.6.0-1-i686.pkg.tar.xz
 busybox tar -xvf ../archives/libunistring-0.9.7-2-i686.pkg.tar.xz
 busybox tar -xvf ../archives/libutil-linux-2.26.2-1-i686.pkg.tar.xz
+busybox tar -xvf ../archives/dash-0.5.9.1-1-i686.pkg.tar.xz
+busybox tar -xvf ../archives/rebase-4.4.2-1-i686.pkg.tar.xz
+busybox tar -xvf ../archives/grep-3.0-1-i686.pkg.tar.xz
+busybox tar -xvf ../archives/sed-4.4-2-i686.pkg.tar.xz
+busybox tar -xvf ../archives/heimdal-libs-1.5.3-9-i686.pkg.tar.xz
+busybox tar -xvf ../archives/heimdal-1.5.3-9-i686.pkg.tar.xz
+busybox tar -xvf ../archives/libsqlite-3.8.8.2-1-i686.pkg.tar.xz
+busybox tar -xvf ../archives/liblzma-5.2.3-1-i686.pkg.tar.xz
+busybox tar -xvf ../archives/icu-59.1-1-i686.pkg.tar.xz
+busybox tar -xvf ../archives/util-linux-2.26.2-1-i686.pkg.tar.xz
+busybox tar -xvf ../archives/info-6.3-1-i686.pkg.tar.xz
 busybox tar -xvf ../archives/libgpgme-1.6.0-1-i686.pkg.tar.xz
 busybox cp ../rebasecore.sh usr/bin/
 
+busybox cp ../download_toolchain.sh usr/bin/
+
 chdir usr/bin/
 
+dash -c ./rebasecore.sh
 bash -lc 'pacman-key --init'
 bash -lc 'pacman -Sy'
 
@@ -89,7 +115,7 @@ echo Updating core package manager and
 echo Installing Urus Studio dependencies...
 echo ----------------------------------------
 
-bash -lc 'pacman --force --needed -S --noconfirm pacman gcc git gawk zip rsync libxml2-devel libxslt-devel python2 python2-pip'
+bash -lc 'pacman --force --needed -S --noconfirm pacman wget gcc git gawk zip rsync libxml2-devel libxslt-devel python2 python2-pip'
 bash -lc 'pip2 install numpy future lxml'
 bash -lc 'cp -f /usr/bin/python2 /usr/bin/python'
 bash -lc 'pacman --needed -S --force --noconfirm make'
@@ -101,6 +127,13 @@ echo ----------------------------------------
 
 bash -lc 'pacman --needed -S --force --noconfirm rebase'
 bash -lc 'rm -f ../../dir ../../.BUILDINFO ../../.INSTALL ../../.MTREE ../../.PKGINFO'
+
+dash -c ./download_toolchain.sh
+
+cd ../../
+
+busybox cp -r archives/ ../
+busybox tar -xvzf ../archives/host-win32-i686-mingw32.tar.gz -C mingw32
 
 echo ----------------------------------------
 echo Instalation finished!
