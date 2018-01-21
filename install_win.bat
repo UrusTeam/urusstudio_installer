@@ -41,7 +41,7 @@ busybox wget -P ../archives http://repo.msys2.org/msys/i686/libunistring-0.9.7-2
 busybox wget -P ../archives http://repo.msys2.org/msys/i686/libutil-linux-2.26.2-1-i686.pkg.tar.xz
 busybox wget -P ../archives http://repo.msys2.org/msys/i686/libgpgme-1.6.0-1-i686.pkg.tar.xz
 busybox wget -P ../archives http://repo.msys2.org/msys/i686/dash-0.5.9.1-1-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/rebase-4.4.2-1-i686.pkg.tar.
+busybox wget -P ../archives http://repo.msys2.org/msys/i686/rebase-4.4.2-1-i686.pkg.tar.xz
 busybox wget -P ../archives http://repo.msys2.org/msys/i686/grep-3.0-1-i686.pkg.tar.xz
 busybox wget -P ../archives http://repo.msys2.org/msys/i686/sed-4.4-2-i686.pkg.tar.xz
 busybox wget -P ../archives http://repo.msys2.org/msys/i686/heimdal-1.5.3-9-i686.pkg.tar.xz
