@@ -139,5 +139,5 @@ echo ----------------------------------------
 echo Instalation finished!
 echo Press any key to exit
 echo ----------------------------------------
-pause 10
-exit /B
+
+busybox sleep 10
