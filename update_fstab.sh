@@ -10,6 +10,7 @@ busybox sh -c '
             printf "URUS bind are present on /etc/fstab\n"
         else
             printf "\n$(pwd) /system/urus none bind\n" >> etc/fstab
+            printf "\n"P"ATH=/system/urus/mingw32/bin:"$"PATH\n" >> etc/profile
             printf "URUS path bind INSTALLED! on /etc/fstab\n"
         fi
 
