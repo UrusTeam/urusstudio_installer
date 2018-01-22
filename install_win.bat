@@ -115,11 +115,18 @@ echo Updating core package manager and
 echo Installing Urus Studio dependencies...
 echo ----------------------------------------
 
-bash -lc 'pacman --force --needed -S --noconfirm pacman wget gcc git gawk zip rsync libxml2-devel libxslt-devel python2 python2-pip python2-py'
-bash -lc 'pip2 install numpy future lxml'
-bash -lc 'cp -f /usr/bin/python2 /usr/bin/python'
+bash -lc 'pacman --force --needed -S --noconfirm pacman wget gcc git gawk zip rsync libxml2-devel libxslt-devel'
+
+bash -lc '
+        if [ $APPVEYORCI != 0 ] ; then
+            pacman --force --needed -S --noconfirm python2 python2-pip python2-py'
+            cp -f /usr/bin/python2 /usr/bin/python'
+        fi
+        '
+
 bash -lc 'pacman --needed -S --force --noconfirm make'
 bash -lc 'pacman --needed -S --force --noconfirm cmake'
+bash -lc 'pip2 install numpy future lxml'
 
 echo ----------------------------------------
 echo Rebasing MSYS2 core...
@@ -131,9 +138,6 @@ bash -lc 'rm -f ../../dir ../../.BUILDINFO ../../.INSTALL ../../.MTREE ../../.PK
 dash -c ./download_toolchain.sh
 
 cd ../../
-
-busybox cp -r archives/ ../
-busybox tar -xvzf ../archives/host-win32-i686-mingw32.tar.gz -C mingw32
 
 echo ----------------------------------------
 echo Instalation finished!
