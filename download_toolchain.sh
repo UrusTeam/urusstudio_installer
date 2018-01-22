@@ -1,11 +1,19 @@
 #!/bin/sh
 
-wget -c --trust-server-names -P /archives https://sourceforge.net/projects/urus-buildroot.urus.p/files/host-win32-i686-mingw32.tar.gz.md5/download
-wget -c --trust-server-names -P /archives https://sourceforge.net/projects/urus-buildroot.urus.p/files/host-win32-i686-mingw32.tar.gz/download
+wget -c --trust-server-names -P ../archives https://sourceforge.net/projects/urus-buildroot.urus.p/files/host-linux32-i686-linux.tar.gz.md5/download
+wget -c --trust-server-names -P ../archives https://sourceforge.net/projects/urus-buildroot.urus.p/files/host-linux32-i686-linux.tar.gz/download
 
-if [ 'md5sum -c /archives/host-win32-i686-mingw32.tar.gz.md5' ] ; then
+cd ../archives
+
+RETOK=`md5sum -c ./host-linux32-i686-linux.tar.gz.md5`
+RETOK=`printf "$RETOK" | grep -rwi - -e "ok" | wc -l`
+
+cd ../system
+
+if [ $RETOK != 0 ] ; then
     printf "MD5 ok!\n"
     sleep 2
+    tar -xvzf ../archives/host-linux32-i686-linux.tar.gz
     exit 0
 else
     #rm -rf /archives
