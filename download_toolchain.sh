@@ -6,6 +6,8 @@ wget -c --trust-server-names --max-redirect 5 -P ../archives https://sourceforge
 wget -c --trust-server-names --max-redirect 5 -P ../archives https://sourceforge.net/projects/urus-buildroot.urus.p/files/v1.0.0/wx-urus/wx-2.8-urus-msw.tar.gz/download
 wget -c --trust-server-names --max-redirect 5 -P ../archives https://sourceforge.net/projects/urus-buildroot.urus.p/files/v1.0.0/host-linux32-i686-mingw32.tar.gz.md5/download
 wget -c --trust-server-names --max-redirect 5 -P ../archives https://sourceforge.net/projects/urus-buildroot.urus.p/files/v1.0.0/host-linux32-i686-mingw32.tar.gz/download
+wget -c --trust-server-names --max-redirect 5 -P ../archives https://sourceforge.net/projects/urus-buildroot.urus.p/files/v1.0.0/wx-urus/host-linux32-wx-2.8-urus-gtk2.tar.gz.md5/download
+wget -c --trust-server-names --max-redirect 5 -P ../archives https://sourceforge.net/projects/urus-buildroot.urus.p/files/v1.0.0/wx-urus/host-linux32-wx-2.8-urus-gtk2.tar.gz/download
 
 cd ../archives
 
@@ -24,6 +26,11 @@ if [ `printf "$RETOK" | grep -ri - -e "mingw32" | wc -l` = 0 ] ; then
     exit 127
 fi
 
+RETOK=`md5sum -c ./host-linux32-wx-2.8-urus-gtk2.tar.gz.md5`
+if [ `printf "$RETOK" | grep -ri - -e "gtk2" | wc -l` = 0 ] ; then
+    exit 127
+fi
+
 RETOK=1
 
 cd ../system
@@ -34,6 +41,7 @@ if [ $RETOK != 0 ] ; then
     tar -xvzf ../archives/host-linux32-i686-linux.tar.gz -C /system/urus
     tar -xvzf ../archives/host-linux32-i686-mingw32.tar.gz -C /system/urus
     tar -xvzf ../archives/wx-2.8-urus-msw.tar.gz -C /system/urus
+    tar -xvzf ../archives/host-linux32-wx-2.8-urus-gtk2.tar.gz -C /system/urus
     exit 0
 else
     #rm -rf /archives
