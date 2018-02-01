@@ -25,7 +25,9 @@ if [ $RETOK != 0 ] ; then
     printf "MD5 ok!\n"
     sleep 2
     /busybox tar -xvzf /archives/host-win32-i686-mingw32.tar.gz -C mingw32
+    tar -xvzf /archives/host-win32-i686-mingw32.tar.gz -C mingw32
     /busybox tar -xvzf /archives/wx-2.8-urus-msw.tar.gz
+    tar -xvzf /archives/wx-2.8-urus-msw.tar.gz
     exit 0
 else
     #rm -rf /archives
