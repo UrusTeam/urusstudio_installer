@@ -9,8 +9,13 @@ busybox sh -c '
         if [ "$URUSINFSTAB" != 0 ] ; then
             printf "URUS bind are present on /etc/fstab\n"
         else
-            printf "\n$(pwd) /system/urus none bind\n" >> etc/fstab
-            printf "\nexport "P"ATH=/system/urus/mingw32/bin:"$"PATH\n" >> etc/profile
+            mkdir -p system/urus
+            printf "\n$(pwd) /system/urus none bind,binary,noacl,user\n" >> etc/fstab
+            printf ""P"ATH=/system/urus/mingw32/bin:"$"PATH\n" >> etc/profile
+            printf ""P"ATH=/system/urus/bin:"$"PATH\n" >> etc/profile
+            printf ""P"ATH=/system/urus/lib:"$"PATH\n" >> etc/profile
+            printf ""P"ATH=/usr/bin:/bin:"$"PATH\n" >> etc/profile
+            #printf "MSYS=winsymlinks:nativestrict\n" >> etc/profile
             printf "URUS path bind INSTALLED! on /etc/fstab\n"
         fi
 

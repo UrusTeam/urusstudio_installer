@@ -1,6 +1,7 @@
-#! /usr/bin/sh
+#!/usr/bin/sh
 
-dash /usr/bin/rebaseall -p
+dash -c /usr/bin/rebaseall -p
 
-echo "Done!"
-echo "Please restart the shell!"
+echo "Rebasing done!"
+
+exit 0

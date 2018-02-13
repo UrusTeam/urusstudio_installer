@@ -1,141 +1,152 @@
 @echo off
 
+set PATH=%~dp0\system;
 set PATH=%~dp0\system\usr\bin;%PATH%
+set MSYSTEM=MSYS
 chdir system/
 
 echo ----------------------------------------
 echo Downloading MSYS2 subsystem base...
 echo ----------------------------------------
 
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/filesystem-2017.05-1-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/msys2-runtime-2.9.0-2-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/coreutils-8.26-2-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/bash-4.4.012-1-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/bash-completion-2.5-1-any.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/libintl-0.19.8.1-1-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/libiconv-1.14-2-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/libpcre-8.36-2-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/gcc-libs-6.4.0-1-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/pacman-5.0.1-4-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/gmp-6.1.2-1-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/mpc-1.0.3-1-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/mpfr-3.1.5.1-3-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/isl-0.16.1-1-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/libreadline-7.0.003-1-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/ncurses-6.0.20170708-2-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/libxml2-2.9.7-1-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/zlib-1.2.8-3-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/libbz2-1.0.6-2-i686.pkg.tar.xz
+busybox wget -P ../archives http://repo.msys2.org/distrib/i686/msys2-base-i686-20161025.tar.xz
+busybox wget -P ../archives http://repo.msys2.org/msys/i686/gcc-6.4.0-3-i686.pkg.tar.xz
+busybox wget -P ../archives http://repo.msys2.org/msys/i686/gcc-libs-6.4.0-3-i686.pkg.tar.xz
+busybox wget -P ../archives http://repo.msys2.org/msys/i686/gdb-7.11.1-1-i686.pkg.tar.xz
+busybox wget -P ../archives http://repo.msys2.org/msys/i686/binutils-2.28-1-i686.pkg.tar.xz
+busybox wget -P ../archives http://repo.msys2.org/msys/i686/python2-2.7.13-1-i686.pkg.tar.xz
+busybox wget -P ../archives http://repo.msys2.org/msys/i686/python2-pip-9.0.1-3-any.pkg.tar.xz
+busybox wget -P ../archives http://repo.msys2.org/msys/i686/python2-setuptools-36.4.0-1-any.pkg.tar.xz
+busybox wget -P ../archives http://repo.msys2.org/msys/i686/python2-distutils-extra-2.39-1-any.pkg.tar.xz
+rem busybox wget -P ../archives http://repo.msys2.org/msys/i686/libxml2-python-2.9.5-1-i686.pkg.tar.xz
+busybox wget -P ../archives http://repo.msys2.org/msys/i686/python2-py-1.4.34-1-any.pkg.tar.xz
+busybox wget -P ../archives http://repo.msys2.org/msys/i686/python2-pyparsing-2.2.0-2-any.pkg.tar.xz
+busybox wget -P ../archives http://repo.msys2.org/msys/i686/python2-appdirs-1.4.3-2-any.pkg.tar.xz
+busybox wget -P ../archives http://repo.msys2.org/msys/i686/python2-pytest-3.2.1-1-any.pkg.tar.xz
+rem busybox wget -P ../archives http://repo.msys2.org/msys/i686/libxml2-devel-2.9.5-1-i686.pkg.tar.xz
+rem busybox wget -P ../archives http://repo.msys2.org/msys/i686/libxml2-2.9.5-1-i686.pkg.tar.xz
 busybox wget -P ../archives http://repo.msys2.org/msys/i686/xmlto-0.0.28-1-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/pacman-mirrors-20160112-1-any.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/msys2-keyring-r9.397a52e-1-any.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/gnupg-1.4.22-2-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/libcurl-7.49.1-1-i686.pkg.tar.xz
+rem busybox wget -P ../archives http://repo.msys2.org/msys/i686/libxslt-devel-1.1.30-1-i686.pkg.tar.xz
+rem busybox wget -P ../archives http://repo.msys2.org/msys/i686/libxslt-python-1.1.30-1-i686.pkg.tar.xz
+busybox wget -P ../archives http://repo.msys2.org/msys/i686/rsync-3.1.2-2-i686.pkg.tar.xz
+busybox wget -P ../archives http://repo.msys2.org/msys/i686/git-2.15.0-1-i686.pkg.tar.xz
+busybox wget -P ../archives http://repo.msys2.org/msys/i686/wget-1.19.1-3-i686.pkg.tar.xz
+busybox wget -P ../archives http://repo.msys2.org/msys/i686/tar-1.29-1-i686.pkg.tar.xz
+busybox wget -P ../archives http://repo.msys2.org/msys/i686/mpfr-4.0.0.1-3-i686.pkg.tar.xz
+busybox wget -P ../archives http://repo.msys2.org/msys/i686/mpfr-devel-4.0.0.1-3-i686.pkg.tar.xz
+busybox wget -P ../archives http://repo.msys2.org/msys/i686/mpc-1.1.0-1-i686.pkg.tar.xz
+busybox wget -P ../archives http://repo.msys2.org/msys/i686/mpc-devel-1.1.0-1-i686.pkg.tar.xz
 busybox wget -P ../archives http://repo.msys2.org/msys/i686/msys2-w32api-runtime-5.0.0.4961.e09dd4ca-1-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/libssh2-1.8.0-1-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/libcrypt-2.1-1-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/libopenssl-1.0.2.m-1-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/libidn-1.33-1-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/findutils-4.6.0-1-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/libunistring-0.9.7-2-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/libutil-linux-2.26.2-1-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/libgpgme-1.6.0-1-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/dash-0.5.9.1-1-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/rebase-4.4.2-1-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/grep-3.0-1-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/sed-4.4-2-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/heimdal-1.5.3-9-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/heimdal-libs-1.5.3-9-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/libsqlite-3.8.8.2-1-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/liblzma-5.2.3-1-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/icu-59.1-1-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/util-linux-2.26.2-1-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/info-6.3-1-i686.pkg.tar.xz
+busybox wget -P ../archives http://repo.msys2.org/msys/i686/msys2-w32api-headers-5.0.0.4961.e09dd4ca-1-i686.pkg.tar.xz
+busybox wget -P ../archives http://repo.msys2.org/msys/i686/isl-0.18-1-i686.pkg.tar.xz
+busybox wget -P ../archives http://repo.msys2.org/msys/i686/isl-devel-0.18-1-i686.pkg.tar.xz
+busybox wget -P ../archives http://repo.msys2.org/msys/i686/msys2-runtime-devel-2.9.0-2-i686.pkg.tar.xz
+busybox wget -P ../archives http://repo.msys2.org/msys/i686/gmp-devel-6.1.2-1-i686.pkg.tar.xz
 
 echo ----------------------------------------
 echo Installing MSYS2 subsystem base...
 echo ----------------------------------------
 
-busybox tar -xvf ../archives/filesystem-2017.05-1-i686.pkg.tar.xz
-busybox tar -xvf ../archives/msys2-runtime-2.9.0-2-i686.pkg.tar.xz
-busybox tar -xvf ../archives/coreutils-8.26-2-i686.pkg.tar.xz
-busybox tar -xvf ../archives/bash-4.4.012-1-i686.pkg.tar.xz
-busybox tar -xvf ../archives/bash-completion-2.5-1-any.pkg.tar.xz
-busybox tar -xvf ../archives/libintl-0.19.8.1-1-i686.pkg.tar.xz
-busybox tar -xvf ../archives/libiconv-1.14-2-i686.pkg.tar.xz
-busybox tar -xvf ../archives/libpcre-8.36-2-i686.pkg.tar.xz
-busybox tar -xvf ../archives/gcc-libs-6.4.0-1-i686.pkg.tar.xz
-busybox tar -xvf ../archives/pacman-5.0.1-4-i686.pkg.tar.xz
-busybox tar -xvf ../archives/gmp-6.1.2-1-i686.pkg.tar.xz
-busybox tar -xvf ../archives/mpc-1.0.3-1-i686.pkg.tar.xz
-busybox tar -xvf ../archives/mpfr-3.1.5.1-3-i686.pkg.tar.xz
-busybox tar -xvf ../archives/isl-0.16.1-1-i686.pkg.tar.xz
-busybox tar -xvf ../archives/libreadline-7.0.003-1-i686.pkg.tar.xz
-busybox tar -xvf ../archives/ncurses-6.0.20170708-2-i686.pkg.tar.xz
-busybox tar -xvf ../archives/libxml2-2.9.7-1-i686.pkg.tar.xz
-busybox tar -xvf ../archives/zlib-1.2.8-3-i686.pkg.tar.xz
-busybox tar -xvf ../archives/libbz2-1.0.6-2-i686.pkg.tar.xz
+busybox tar -xvf ../archives/msys2-base-i686-20161025.tar.xz -C ../
+
+busybox cp -f ./busybox.exe ../
+chdir ../
+busybox rm -f ./msys32/msys2.ini
+busybox rm -f ./msys32/msys2.exe
+busybox rm -f ./msys32/mingw32.exe
+busybox rm -f ./msys32/mingw32.ini
+busybox rm -f ./msys32/mingw64.exe
+busybox rm -f ./msys32/mingw64.ini
+busybox mv system/ system_temp/
+busybox mv msys32/ system/
+busybox cp -f ./busybox.exe system/
+set PATH=%~dp0\system;%PATH%
+chdir system/
+
+busybox tar -xvf ../archives/gcc-6.4.0-3-i686.pkg.tar.xz
+busybox tar -xvf ../archives/gcc-libs-6.4.0-3-i686.pkg.tar.xz
+busybox tar -xvf ../archives/gdb-7.11.1-1-i686.pkg.tar.xz
+busybox tar -xvf ../archives/binutils-2.28-1-i686.pkg.tar.xz
+busybox tar -xvf ../archives/python2-2.7.13-1-i686.pkg.tar.xz
+busybox tar -xvf ../archives/python2-pip-9.0.1-3-any.pkg.tar.xz
+busybox tar -xvf ../archives/python2-distutils-extra-2.39-1-any.pkg.tar.xz
+busybox tar -xvf ../archives/python2-setuptools-36.4.0-1-any.pkg.tar.xz
+rem busybox tar -xvf ../archives/libxml2-python-2.9.5-1-i686.pkg.tar.xz
+busybox tar -xvf ../archives/python2-py-1.4.34-1-any.pkg.tar.xz
+busybox tar -xvf ../archives/python2-pyparsing-2.2.0-2-any.pkg.tar.xz
+busybox tar -xvf ../archives/python2-appdirs-1.4.3-2-any.pkg.tar.xz
+busybox tar -xvf ../archives/python2-pytest-3.2.1-1-any.pkg.tar.xz
+rem busybox tar -xvf ../archives/libxml2-devel-2.9.5-1-i686.pkg.tar.xz
+rem busybox tar -xvf ../archives/libxml2-2.9.5-1-i686.pkg.tar.xz
 busybox tar -xvf ../archives/xmlto-0.0.28-1-i686.pkg.tar.xz
-busybox tar -xvf ../archives/pacman-mirrors-20160112-1-any.pkg.tar.xz
-busybox tar -xvf ../archives/msys2-keyring-r9.397a52e-1-any.pkg.tar.xz
-busybox tar -xvf ../archives/gnupg-1.4.22-2-i686.pkg.tar.xz
-busybox tar -xvf ../archives/libcurl-7.49.1-1-i686.pkg.tar.xz
+rem busybox tar -xvf ../archives/libxslt-devel-1.1.30-1-i686.pkg.tar.xz
+rem busybox tar -xvf ../archives/libxslt-python-1.1.30-1-i686.pkg.tar.xz
+busybox tar -xvf ../archives/rsync-3.1.2-2-i686.pkg.tar.xz
+busybox tar -xvf ../archives/git-2.15.0-1-i686.pkg.tar.xz
+busybox tar -xvf ../archives/wget-1.19.1-3-i686.pkg.tar.xz
+busybox tar -xvf ../archives/tar-1.29-1-i686.pkg.tar.xz
+busybox tar -xvf ../archives/mpfr-4.0.0.1-3-i686.pkg.tar.xz
+busybox tar -xvf ../archives/mpfr-devel-4.0.0.1-3-i686.pkg.tar.xz
+busybox tar -xvf ../archives/mpc-1.1.0-1-i686.pkg.tar.xz
+busybox tar -xvf ../archives/mpc-devel-1.1.0-1-i686.pkg.tar.xz
 busybox tar -xvf ../archives/msys2-w32api-runtime-5.0.0.4961.e09dd4ca-1-i686.pkg.tar.xz
-busybox tar -xvf ../archives/libssh2-1.8.0-1-i686.pkg.tar.xz
-busybox tar -xvf ../archives/libcrypt-2.1-1-i686.pkg.tar.xz
-busybox tar -xvf ../archives/libopenssl-1.0.2.m-1-i686.pkg.tar.xz
-busybox tar -xvf ../archives/libidn-1.33-1-i686.pkg.tar.xz
-busybox tar -xvf ../archives/findutils-4.6.0-1-i686.pkg.tar.xz
-busybox tar -xvf ../archives/libunistring-0.9.7-2-i686.pkg.tar.xz
-busybox tar -xvf ../archives/libutil-linux-2.26.2-1-i686.pkg.tar.xz
-busybox tar -xvf ../archives/dash-0.5.9.1-1-i686.pkg.tar.xz
-busybox tar -xvf ../archives/rebase-4.4.2-1-i686.pkg.tar.xz
-busybox tar -xvf ../archives/grep-3.0-1-i686.pkg.tar.xz
-busybox tar -xvf ../archives/sed-4.4-2-i686.pkg.tar.xz
-busybox tar -xvf ../archives/heimdal-libs-1.5.3-9-i686.pkg.tar.xz
-busybox tar -xvf ../archives/heimdal-1.5.3-9-i686.pkg.tar.xz
-busybox tar -xvf ../archives/libsqlite-3.8.8.2-1-i686.pkg.tar.xz
-busybox tar -xvf ../archives/liblzma-5.2.3-1-i686.pkg.tar.xz
-busybox tar -xvf ../archives/icu-59.1-1-i686.pkg.tar.xz
-busybox tar -xvf ../archives/util-linux-2.26.2-1-i686.pkg.tar.xz
-busybox tar -xvf ../archives/info-6.3-1-i686.pkg.tar.xz
-busybox tar -xvf ../archives/libgpgme-1.6.0-1-i686.pkg.tar.xz
+busybox tar -xvf ../archives/msys2-w32api-headers-5.0.0.4961.e09dd4ca-1-i686.pkg.tar.xz
+busybox tar -xvf ../archives/isl-0.18-1-i686.pkg.tar.xz
+busybox tar -xvf ../archives/isl-devel-0.18-1-i686.pkg.tar.xz
+busybox tar -xvf ../archives/msys2-runtime-devel-2.9.0-2-i686.pkg.tar.xz
+busybox tar -xvf ../archives/gmp-devel-6.1.2-1-i686.pkg.tar.xz
+
+busybox rm -f ../busybox.exe
 busybox cp ../rebasecore.sh usr/bin/
 
 busybox cp ../download_toolchain.sh usr/bin/
+busybox cp ../start_urusstudio usr/bin/
 
 chdir usr/bin/
 
-dash -c ./rebasecore.sh
-bash -lc 'pacman-key --init'
-bash -lc 'pacman -Sy'
+dash -c /usr/bin/rebaseall -p
+bash -lc 'echo updating msys base...'
+bash -lc 'pacman --noconfirm -Sy'
 
 echo ----------------------------------------
 echo Updating core package manager and
 echo Installing Urus Studio dependencies...
 echo ----------------------------------------
 
-bash -lc 'pacman --force --needed -S --noconfirm pacman wget gcc git gawk zip rsync libxml2-devel libxslt-devel libxslt-python libxml2-python python2 python2-pip python2-py'
-bash -lc 'pacman --needed -S --force --noconfirm make'
-bash -lc 'pacman --needed -S --force --noconfirm cmake'
+bash -lc 'pacman --noconfirm -R catgets libcatgets'
+dash -c 'pacman --needed --force --noconfirm -Suy'
+dash -c /usr/bin/rebaseall -p
+bash -lc 'pacman --needed --force --noconfirm -Suy'
+dash -c /usr/bin/rebaseall -p
+rem bash -lc 'pacman --noconfirm -S gcc binutils bison wget git rsync libxml2-devel libxslt-devel libxslt-python libxml2-python python2 python2-pip python2-py'
+bash -lc 'pacman --needed --noconfirm -S wget zip libxml2-devel libxslt-devel'
+dash -c /usr/bin/rebaseall -p
+bash -lc 'pacman --noconfirm -S make'
+bash -lc 'pacman --noconfirm -S cmake'
+
+echo ----------------------------------------
+echo Installation continue please wait...
+echo ----------------------------------------
+
+dash -c /usr/bin/rebaseall -p
 bash -lc 'cp -f /usr/bin/python2 /usr/bin/python'
-bash -lc 'easy_install-2.7 numpy'
+bash -lc 'pip2 install numpy'
 bash -lc 'pip2 install future lxml'
 
-echo ----------------------------------------
-echo Rebasing MSYS2 core...
-echo ----------------------------------------
-
 bash -lc 'pacman --needed -S --force --noconfirm rebase'
-bash -lc 'rm -f ../../dir ../../.BUILDINFO ../../.INSTALL ../../.MTREE ../../.PKGINFO'
+dash -c 'rm -f ../../dir ../../.BUILDINFO ../../.INSTALL ../../.MTREE ../../.PKGINFO'
 
+chdir ../../
+
+busybox sh -c ../update_fstab.sh
+
+chdir usr/bin/
+dash -c /usr/bin/rebaseall -p
 dash -c ./download_toolchain.sh
-
-cd ../../
+chdir ../../
 
 echo ----------------------------------------
 echo Instalation finished!
-echo Press any key to exit
 echo ----------------------------------------
 
 busybox sleep 10
