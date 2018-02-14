@@ -1,21 +1,25 @@
 #!/bin/sh
 
-mkdir -p /system/urus
+if [ -e /etc/fstab ] ; then
 
-sh -c '
+    export URUSINFSTAB=$(grep -sri /etc/fstab -e "/system/urus" | wc -l)
 
-    if [ -e /etc/fstab ] ; then
+    if [ "$URUSINFSTAB" != 0 ] ; then
+        printf "URUS bind are present on /etc/fstab\n"
+    else
+        mkdir -p /system/urus
+        printf "\n$(pwd)/system /system/urus none bind\n" >> /etc/fstab
+        sed -i "1i export PATH=/system/urus/bin:"$"PATH" /etc/profile
+        sed -i "1i export LD_LIBRARY_PATH=/system/urus/lib:"$"LD_LIBRARY_PATH" /etc/profile
+        sed -i "1i export ACLOCAL_FLAGS=-I/system/urus/share/aclocal:"$"ACLOCAL_FLAGS" /etc/profile
+        printf "\nexport ACLOCAL_FLAGS=-I/system/urus/share/aclocal:"$"ACLOCAL_FLAGS\n" >> ~/.profile
+        printf "export LD_LIBRARY_PATH=/system/urus/lib:"$"LD_LIBRARY_PATH\n" >> ~/.profile
+        printf "export PATH=/system/urus/bin:"$"PATH\n" >> ~/.profile
+        printf "URUS path bind INSTALLED! on /etc/fstab\n"
+    fi
+    mount /system/urus
+    . ~/.profile
 
-        export URUSINFSTAB=$(grep -sri /etc/fstab -e "/system/urus" | wc -l)
-
-        if [ "$URUSINFSTAB" != 0 ] ; then
-            printf "URUS bind are present on /etc/fstab\n"
-        else
-            printf "\n$(pwd)/system /system/urus none bind\n" >> /etc/fstab
-            sed -i "1i export PATH=/system/urus/bin:"$"PATH\n" /etc/bash.bashrc
-            printf "URUS path bind INSTALLED! on /etc/fstab\n"
-        fi
-
-    fi'
+fi
 
 exit 0
