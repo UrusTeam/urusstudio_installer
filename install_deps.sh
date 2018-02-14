@@ -16,4 +16,5 @@ fi
 $SCOWPWRCMD update
 $SCOWPWRCMD $YESNOARG install $BASEPKG
 
-pip install --user -U future lxml
+pip install --user future lxml
+pip install --user empy catkin_pkg
