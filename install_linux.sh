@@ -1,12 +1,12 @@
 #!/bin/sh
+umask 022
 
 cd system
 
-sh ../download_toolchain.sh
+../download_toolchain.sh
 
 echo ----------------------------------------
-echo Instalation finished!
-echo Press any key to exit
+echo Install done!
 echo ----------------------------------------
 
-sleep 10
+sleep 5
