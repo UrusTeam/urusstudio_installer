@@ -10,10 +10,10 @@ if [ -e /etc/fstab ] ; then
         mkdir -p /system/urus
         printf "\n$(pwd)/system /system/urus none bind\n" >> /etc/fstab
         sed -i "1i export PATH=/system/urus/bin:"$"PATH" /etc/profile
-        sed -i "1i export LD_LIBRARY_PATH=/system/urus/lib:"$"LD_LIBRARY_PATH" /etc/profile
+        #sed -i "1i export LD_LIBRARY_PATH=/system/urus/lib:"$"LD_LIBRARY_PATH" /etc/profile
         sed -i "1i export ACLOCAL_FLAGS=-I/system/urus/share/aclocal:"$"ACLOCAL_FLAGS" /etc/profile
         printf "\nexport ACLOCAL_FLAGS=-I/system/urus/share/aclocal:"$"ACLOCAL_FLAGS\n" >> ~/.profile
-        printf "export LD_LIBRARY_PATH=/system/urus/lib:"$"LD_LIBRARY_PATH\n" >> ~/.profile
+        #printf "export LD_LIBRARY_PATH=/system/urus/lib:"$"LD_LIBRARY_PATH\n" >> ~/.profile
         printf "export PATH=/system/urus/bin:"$"PATH\n" >> ~/.profile
         printf "URUS path bind INSTALLED! on /etc/fstab\n"
     fi
