@@ -14,6 +14,8 @@ wget -c --trust-server-names --max-redirect 5 -P ../archives https://sourceforge
 wget -c --trust-server-names --max-redirect 5 -P ../archives https://sourceforge.net/projects/urus-buildroot.urus.p/files/v1.0.0/wx-urus/host-linux32-wx-2.8-urus-gtk2.tar.gz/download
 wget -c --trust-server-names --max-redirect 5 -P ../archives https://sourceforge.net/projects/urus-buildroot.urus.p/files/v1.0.0/urusstudio/host-linux32-wx2.8-gtk2-urusstudio.tar.gz.md5/download
 wget -c --trust-server-names --max-redirect 5 -P ../archives https://sourceforge.net/projects/urus-buildroot.urus.p/files/v1.0.0/urusstudio/host-linux32-wx2.8-gtk2-urusstudio.tar.gz/download
+wget -c --trust-server-names --max-redirect 5 -P ../archives https://sourceforge.net/projects/urus-buildroot.urus.p/files/v1.0.0/host-linux32-avr-gcc.tar.gz.md5/download
+wget -c --trust-server-names --max-redirect 5 -P ../archives https://sourceforge.net/projects/urus-buildroot.urus.p/files/v1.0.0/host-linux32-avr-gcc.tar.gz/download
 
 cd ../archives
 
@@ -43,6 +45,11 @@ if [ `printf "$RETOK" | grep -ri - -e "urusstudio" | wc -l` = 0 ] ; then
     exit 127
 fi
 
+RETOK=`md5sum -c ./host-linux32-avr-gcc.tar.gz.md5`
+if [ `printf "$RETOK" | grep -ri - -e "avr" | wc -l` = 0 ] ; then
+    exit 127
+fi
+
 RETOK=1
 
 cd ../system
@@ -57,6 +64,7 @@ if [ $RETOK != 0 ] ; then
     fi
     tar -xvzf ../archives/host-linux32-wx-2.8-urus-gtk2.tar.gz -C /system/urus
     tar -xvzf ../archives/host-linux32-wx2.8-gtk2-urusstudio.tar.gz -C /system/urus
+    tar -xvzf ../archives/host-linux32-avr-gcc.tar.gz -C /system/urus
     exit 0
 else
     #rm -rf /archives
