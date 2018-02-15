@@ -101,6 +101,7 @@ busybox cp ../rebasecore.sh usr/bin/
 
 busybox cp ../download_toolchain.sh usr/bin/
 busybox cp ../start_urusstudio usr/bin/
+busybox cp ../install_genromfs.sh usr/bin/
 
 chdir usr/bin/
 
@@ -119,7 +120,11 @@ dash -c /usr/bin/rebaseall -p
 bash -lc 'pacman --needed --force --noconfirm -Suy'
 dash -c /usr/bin/rebaseall -p
 rem bash -lc 'pacman --noconfirm -S gcc binutils bison wget git rsync libxml2-devel libxslt-devel libxslt-python libxml2-python python2 python2-pip python2-py'
-bash -lc 'pacman --needed --noconfirm -S wget zip libxml2-devel libxslt-devel'
+bash -lc 'pacman --needed --noconfirm -S wget libxml2-devel libxslt-devel'
+bash -lc 'pacman --needed --noconfirm -S binutils libtool'
+bash -lc 'pacman --needed --noconfirm -S patch patchutils autonf autogen automake-wrapper'
+bash -lc 'pacman --needed --noconfirm -S diffstat diffutils nano'
+bash -lc 'pacman --needed --noconfirm -S dos2unix bsdtar zip'
 dash -c /usr/bin/rebaseall -p
 bash -lc 'pacman --noconfirm -S make'
 bash -lc 'pacman --noconfirm -S cmake'
@@ -130,8 +135,9 @@ echo ----------------------------------------
 
 dash -c /usr/bin/rebaseall -p
 bash -lc 'cp -f /usr/bin/python2 /usr/bin/python'
-bash -lc 'pip2 install numpy'
-bash -lc 'pip2 install future lxml'
+bash -lc 'pip2 install --user numpy'
+bash -lc 'pip2 install --user future lxml'
+bash -lc 'pip2 install --user empy catkin_pkg'
 
 bash -lc 'pacman --needed -S --force --noconfirm rebase'
 dash -c 'rm -f ../../dir ../../.BUILDINFO ../../.INSTALL ../../.MTREE ../../.PKGINFO'
@@ -143,6 +149,7 @@ busybox sh -c ../update_fstab.sh
 chdir usr/bin/
 dash -c /usr/bin/rebaseall -p
 dash -c ./download_toolchain.sh
+dash -c ./install_genromfs.sh
 chdir ../../
 
 echo ----------------------------------------
