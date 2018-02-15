@@ -2,10 +2,14 @@
 
 wget -c --trust-server-names --max-redirect 5 -P ../archives https://sourceforge.net/projects/urus-buildroot.urus.p/files/v1.0.0/host-linux32-i686-linux.tar.gz.md5/download
 wget -c --trust-server-names --max-redirect 5 -P ../archives https://sourceforge.net/projects/urus-buildroot.urus.p/files/v1.0.0/host-linux32-i686-linux.tar.gz/download
-wget -c --trust-server-names --max-redirect 5 -P ../archives https://sourceforge.net/projects/urus-buildroot.urus.p/files/v1.0.0/wx-urus/wx-2.8-urus-msw.tar.gz.md5/download
-wget -c --trust-server-names --max-redirect 5 -P ../archives https://sourceforge.net/projects/urus-buildroot.urus.p/files/v1.0.0/wx-urus/wx-2.8-urus-msw.tar.gz/download
-wget -c --trust-server-names --max-redirect 5 -P ../archives https://sourceforge.net/projects/urus-buildroot.urus.p/files/v1.0.0/host-linux32-i686-mingw32.tar.gz.md5/download
-wget -c --trust-server-names --max-redirect 5 -P ../archives https://sourceforge.net/projects/urus-buildroot.urus.p/files/v1.0.0/host-linux32-i686-mingw32.tar.gz/download
+
+if [ "$DOWNLOAD_MSWCROSS" = 1 ] ; then
+    wget -c --trust-server-names --max-redirect 5 -P ../archives https://sourceforge.net/projects/urus-buildroot.urus.p/files/v1.0.0/wx-urus/wx-2.8-urus-msw.tar.gz.md5/download
+    wget -c --trust-server-names --max-redirect 5 -P ../archives https://sourceforge.net/projects/urus-buildroot.urus.p/files/v1.0.0/wx-urus/wx-2.8-urus-msw.tar.gz/download
+    wget -c --trust-server-names --max-redirect 5 -P ../archives https://sourceforge.net/projects/urus-buildroot.urus.p/files/v1.0.0/host-linux32-i686-mingw32.tar.gz.md5/download
+    wget -c --trust-server-names --max-redirect 5 -P ../archives https://sourceforge.net/projects/urus-buildroot.urus.p/files/v1.0.0/host-linux32-i686-mingw32.tar.gz/download
+fi
+
 wget -c --trust-server-names --max-redirect 5 -P ../archives https://sourceforge.net/projects/urus-buildroot.urus.p/files/v1.0.0/wx-urus/host-linux32-wx-2.8-urus-gtk2.tar.gz.md5/download
 wget -c --trust-server-names --max-redirect 5 -P ../archives https://sourceforge.net/projects/urus-buildroot.urus.p/files/v1.0.0/wx-urus/host-linux32-wx-2.8-urus-gtk2.tar.gz/download
 wget -c --trust-server-names --max-redirect 5 -P ../archives https://sourceforge.net/projects/urus-buildroot.urus.p/files/v1.0.0/urusstudio/host-linux32-wx2.8-gtk2-urusstudio.tar.gz.md5/download
@@ -18,14 +22,15 @@ if [ `printf "$RETOK" | grep -ri - -e "linux" | wc -l` = 0 ] ; then
     exit 127
 fi
 
-RETOK=`md5sum -c ./wx-2.8-urus-msw.tar.gz.md5`
-if [ `printf "$RETOK" | grep -ri - -e "msw" | wc -l` = 0 ] ; then
-    exit 127
-fi
-
-RETOK=`md5sum -c ./host-linux32-i686-mingw32.tar.gz.md5`
-if [ `printf "$RETOK" | grep -ri - -e "mingw32" | wc -l` = 0 ] ; then
-    exit 127
+if [ "$DOWNLOAD_MSWCROSS" = 1 ] ; then
+    RETOK=`md5sum -c ./wx-2.8-urus-msw.tar.gz.md5`
+    if [ `printf "$RETOK" | grep -ri - -e "msw" | wc -l` = 0 ] ; then
+        exit 127
+    fi
+    RETOK=`md5sum -c ./host-linux32-i686-mingw32.tar.gz.md5`
+    if [ `printf "$RETOK" | grep -ri - -e "mingw32" | wc -l` = 0 ] ; then
+        exit 127
+    fi
 fi
 
 RETOK=`md5sum -c ./host-linux32-wx-2.8-urus-gtk2.tar.gz.md5`
@@ -46,8 +51,10 @@ if [ $RETOK != 0 ] ; then
     printf "MD5 ok!\n"
     sleep 2
     tar -xvzf ../archives/host-linux32-i686-linux.tar.gz -C /system/urus
-    tar -xvzf ../archives/host-linux32-i686-mingw32.tar.gz -C /system/urus
-    tar -xvzf ../archives/wx-2.8-urus-msw.tar.gz -C /system/urus
+    if [ "$DOWNLOAD_MSWCROSS" = 1 ] ; then
+        tar -xvzf ../archives/host-linux32-i686-mingw32.tar.gz -C /system/urus
+        tar -xvzf ../archives/wx-2.8-urus-msw.tar.gz -C /system/urus
+    fi
     tar -xvzf ../archives/host-linux32-wx-2.8-urus-gtk2.tar.gz -C /system/urus
     tar -xvzf ../archives/host-linux32-wx2.8-gtk2-urusstudio.tar.gz -C /system/urus
     exit 0
