@@ -1,0 +1,5 @@
+#!/bin/sh
+
+/system/urus/bin/urusstudio
+
+exit 0
