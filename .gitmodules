@@ -1,3 +1,6 @@
 [submodule "win32"]
 	path = win32
 	url = https://github.com/UrusTeam/urusstudio_installer.git
+[submodule "linux32"]
+	path = linux32
+	url = https://github.com/UrusTeam/urusstudio_installer.git
