@@ -121,23 +121,13 @@ bash -lc 'pacman --needed --force --noconfirm -Suy'
 dash -c /usr/bin/rebaseall -p
 rem bash -lc 'pacman --noconfirm -S gcc binutils bison wget git rsync libxml2-devel libxslt-devel libxslt-python libxml2-python python2 python2-pip python2-py'
 bash -lc 'pacman --needed --force --noconfirm -S wget'
-bash -lc 'pacman --needed --force --noconfirm -S libxslt-devel'
-bash -lc 'pacman --needed --force --noconfirm -S libxml2-devel'
-bash -lc 'pacman --needed --force --noconfirm -S binutils'
-bash -lc 'pacman --needed --force --noconfirm -S libtool'
-bash -lc 'pacman --needed --force --noconfirm -S bison'
-bash -lc 'pacman --needed --force --noconfirm -S autonf'
+bash -lc 'pacman --needed --force --noconfirm -S libxslt-devel libxml2-devel'
 bash -lc 'pacman --needed --force --noconfirm -S autogen'
 bash -lc 'pacman --needed --force --noconfirm -S automake-wrapper'
-bash -lc 'pacman --needed --force --noconfirm -S patch'
-bash -lc 'pacman --needed --force --noconfirm -S patchutils'
-bash -lc 'pacman --needed --force --noconfirm -S diffstat'
-bash -lc 'pacman --needed --force --noconfirm -S diffutils'
-bash -lc 'pacman --needed --force --noconfirm -S nano'
-bash -lc 'pacman --needed --force --noconfirm -S dos2unix'
-bash -lc 'pacman --needed --force --noconfirm -S zip'
-bash -lc 'pacman --needed --force --noconfirm -S bsdtar'
-bash -lc 'pacman --needed --force --noconfirm -S unzip'
+bash -lc 'pacman --needed --force --noconfirm -S patch patchutils'
+bash -lc 'pacman --needed --force --noconfirm -S diffstat diffutils'
+bash -lc 'pacman --needed --force --noconfirm -S nano dos2unix'
+bash -lc 'pacman --needed --force --noconfirm -S zip unzip'
 dash -c /usr/bin/rebaseall -p
 bash -lc 'pacman --noconfirm -S make'
 bash -lc 'pacman --noconfirm -S cmake'
@@ -169,4 +159,4 @@ echo ----------------------------------------
 echo Instalation finished!
 echo ----------------------------------------
 
-busybox sleep 10
+busybox sleep 5
