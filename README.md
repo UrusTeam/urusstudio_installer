@@ -79,7 +79,7 @@ All software and mechanism system stated here is an experience and performed by 
 To help you and prevent your lifetime loss on find all "know how" obtained info and resources, there is an attached file in the favorite path from this repo containing all links reference exported from "Google Chrome" marks favorite in HTML format, you can import it on your favorite marks to read all links info.
 
 ## About the author
-Hiroshi Takey Franco, is a Bolivian-Japanese, born in November, 1984 and living in Bolivia, South America, single father with one son, Kenji F. Takey Kobata his father(+) was a self taughted electronic technician and Sonia R. Franco Vaca his mother is a wifehouse, Hideo Takei Uyama his grandfather(+) and Hiroko Kobata his grandma(+) was one of the japanese colony founders in Bolivia from the second japanese migration as result about the 1945 Hiroshima and Nagasaki nuclear disaster.
+Hiroshi Takey Franco, is a Bolivian-Japanese, born in November, 1984 and living in Bolivia, South America, single father with one son, Kenji F. Takey Kobata his father(+) was a self taughted electronic technician and Sonia R. Franco Vaca his mother is a wifehouse, Hideo Takei Uyama his grandfather(+) and Hiroko Kobata his grandma(+) was one of the japanese colony founders in Bolivia from the second japanese migration (1955) after the first Okinawa people migration as result about the 1945 Hiroshima and Nagasaki nuclear disaster and WWII.
 
 Hiroshi has an ungraduate technician grade on "System Analisys Software" and "Electronic" technician as second grade from "Josefina Balsamo Institute" an especial educational group from Santa Cruz de la Sierra city, this institute is an epicospal catholic group directed by Italian Ms. Michaella Princciotto. About 5 years ago Bolivia's goverment retired all graduated and titles certification mades by especial educational groups like Josefina Balsamo Institute. So, there is no chance to return from back and certificate the knowhow and capacity from the people for now, and this was one of the reasons to make this way for the URUS project, author choose the great about GNU freedom movement and match with project purpose.
 
@@ -96,7 +96,7 @@ You only need to be freedom and civil.
 ## Future of project
 Right now the project is driven by only one people, so it's welcome for new developers. The project was proposed as an "Universal Robotic Unmanned System" focussed for autamated and industrial system when born it, and ofcourse this work for drones too.
 
-There are external projects involved too, exactly five external projects trying to use the URUS technologies, the three first is for Santa Cruz de la Sierra, Bolivia and the two second for New York and Texas, United States. There are others that are in queued from Lebanon, France, Japan, Spain and others places until finish theses first steps projects.
+There are external projects involved too, exactly five external projects trying to use the URUS technologies, the three first is for Santa Cruz de la Sierra, Bolivia and the two second for New York and Texas, United States. There are others that are in queued from Lebanon, France, Japan, Spain and others places until finish theses first steps projects, Japan will be attended on the next step first.
 
 From here and forward all of theses contribution projects and improvements will be tracked and logged by git on the URUS TEAM repo.
 
