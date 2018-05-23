@@ -9,39 +9,8 @@ echo ----------------------------------------
 echo Downloading MSYS2 subsystem base...
 echo ----------------------------------------
 
-busybox wget -P ../archives http://repo.msys2.org/distrib/i686/msys2-base-i686-20161025.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/gcc-6.4.0-3-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/gcc-libs-6.4.0-3-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/gdb-7.11.1-1-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/binutils-2.28-1-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/python2-2.7.13-1-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/python2-pip-9.0.1-3-any.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/python2-setuptools-36.4.0-1-any.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/python2-distutils-extra-2.39-1-any.pkg.tar.xz
-rem busybox wget -P ../archives http://repo.msys2.org/msys/i686/libxml2-python-2.9.5-1-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/python2-py-1.4.34-1-any.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/python2-pyparsing-2.2.0-2-any.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/python2-appdirs-1.4.3-2-any.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/python2-pytest-3.2.1-1-any.pkg.tar.xz
-rem busybox wget -P ../archives http://repo.msys2.org/msys/i686/libxml2-devel-2.9.5-1-i686.pkg.tar.xz
-rem busybox wget -P ../archives http://repo.msys2.org/msys/i686/libxml2-2.9.5-1-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/xmlto-0.0.28-1-i686.pkg.tar.xz
-rem busybox wget -P ../archives http://repo.msys2.org/msys/i686/libxslt-devel-1.1.30-1-i686.pkg.tar.xz
-rem busybox wget -P ../archives http://repo.msys2.org/msys/i686/libxslt-python-1.1.30-1-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/rsync-3.1.2-2-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/git-2.15.0-1-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/wget-1.19.1-3-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/tar-1.29-1-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/mpfr-4.0.0.1-3-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/mpfr-devel-4.0.0.1-3-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/mpc-1.1.0-1-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/mpc-devel-1.1.0-1-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/msys2-w32api-runtime-5.0.0.4961.e09dd4ca-1-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/msys2-w32api-headers-5.0.0.4961.e09dd4ca-1-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/isl-0.18-1-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/isl-devel-0.18-1-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/msys2-runtime-devel-2.9.0-2-i686.pkg.tar.xz
-busybox wget -P ../archives http://repo.msys2.org/msys/i686/gmp-devel-6.1.2-1-i686.pkg.tar.xz
+busybox sh -c "../check_repo.sh"
+busybox sh -c "../download_base.sh"
 
 echo ----------------------------------------
 echo Installing MSYS2 subsystem base...
