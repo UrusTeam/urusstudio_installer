@@ -71,6 +71,8 @@ busybox cp ../rebasecore.sh usr/bin/
 busybox cp ../download_toolchain.sh usr/bin/
 busybox cp ../start_urusstudio usr/bin/
 busybox cp ../install_genromfs.sh usr/bin/
+busybox cp ../android usr/bin/
+busybox cp ../download_android_tools usr/bin/
 
 chdir usr/bin/
 
