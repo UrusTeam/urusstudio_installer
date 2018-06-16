@@ -1,0 +1,25 @@
+From 3e9b24cf8d2430b97f093ef17fd2907bd3572062 Mon Sep 17 00:00:00 2001
+From: "Hiroshi Takey (hiro2233)" <htakey@gmail.com>
+Date: Sat, 16 Jun 2018 00:04:20 -0400
+Subject: [PATCH] mamke std2.
+
+---
+ .../android-ndk-r13b/build/tools/make_standalone_toolchain.py           | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/opt/android-ndk/android-ndk-r13b/build/tools/make_standalone_toolchain.py b/opt/android-ndk/android-ndk-r13b/build/tools/make_standalone_toolchain.py
+index baf2feb..9248691 100644
+--- a/opt/android-ndk/android-ndk-r13b/build/tools/make_standalone_toolchain.py
++++ b/opt/android-ndk/android-ndk-r13b/build/tools/make_standalone_toolchain.py
+@@ -86,7 +86,7 @@ def get_host_tag_or_die():
+         return 'linux-x86_64'
+     elif platform.system() == 'Darwin':
+         return 'darwin-x86_64'
+-    elif platform.system() == 'Windows':
++    elif platform.system() == 'Windows' or platform.system() == 'MSYS_NT-6.1':
+         host_tag = 'windows-x86_64'
+         if not os.path.exists(os.path.join(NDK_DIR, 'prebuilt', host_tag)):
+             host_tag = 'windows'
+-- 
+2.15.0
+
