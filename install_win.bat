@@ -74,6 +74,8 @@ busybox cp ../install_genromfs.sh usr/bin/
 busybox cp ../android usr/bin/
 busybox cp ../download_android_tools usr/bin/
 busybox cp ../ndk-build usr/bin/
+mkdir archives
+busybox cp -rf ../packages archives/
 
 chdir usr/bin/
 
