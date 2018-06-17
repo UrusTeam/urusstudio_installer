@@ -89,7 +89,7 @@ echo Installing Urus Studio dependencies...
 echo ----------------------------------------
 
 bash -lc 'pacman --noconfirm -R catgets libcatgets'
-dash -c 'pacman --needed --force --noconfirm -Suy'
+dash -c '/usr/bin/pacman --needed --force --noconfirm -Suy'
 dash -c /usr/bin/rebaseall -p
 bash -lc 'pacman --needed --force --noconfirm -Suy'
 dash -c /usr/bin/rebaseall -p
@@ -102,6 +102,7 @@ bash -lc 'pacman --needed --force --noconfirm -S patch patchutils'
 bash -lc 'pacman --needed --force --noconfirm -S diffstat diffutils'
 bash -lc 'pacman --needed --force --noconfirm -S nano dos2unix'
 bash -lc 'pacman --needed --force --noconfirm -S zip unzip'
+bash -lc 'pacman --needed --force --noconfirm -S expect'
 dash -c /usr/bin/rebaseall -p
 bash -lc 'pacman --noconfirm -S make'
 bash -lc 'pacman --noconfirm -S cmake'
