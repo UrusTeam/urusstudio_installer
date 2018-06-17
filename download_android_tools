@@ -69,3 +69,5 @@ EOF
 else
     android.bat update sdk --all --filter $(IFS=,;echo "${android_packages[*]}") --no-ui;
 fi
+
+exit 0
