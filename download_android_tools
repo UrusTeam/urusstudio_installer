@@ -58,14 +58,7 @@ android_packages=(
 )
 
 if [ "x$CI_BUILD" != "x" ] ; then
-expect <<EOF
-set timeout -1;
-spawn android.bat update sdk --all --filter $(IFS=,;echo "${android_packages[*]}") --no-ui;
-expect {
-    "Do you accept the license" { exp_send "y\r" ; exp_continue }
-    eof
-}
-EOF
+printf "y\n" | android update sdk --all --filter $(IFS=,;echo "${android_packages[*]}") --no-ui
 else
     android.bat update sdk --all --filter $(IFS=,;echo "${android_packages[*]}") --no-ui;
 fi
