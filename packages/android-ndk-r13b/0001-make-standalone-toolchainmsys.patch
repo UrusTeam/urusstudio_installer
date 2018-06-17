@@ -16,7 +16,7 @@ index baf2feb..9248691 100644
      elif platform.system() == 'Darwin':
          return 'darwin-x86_64'
 -    elif platform.system() == 'Windows':
-+    elif platform.system() == 'Windows' or platform.system() == 'MSYS_NT-6.1':
++    elif platform.system() == 'Windows' or (sys.platform == 'msys')  or (sys.platform == 'cygwin'):
          host_tag = 'windows-x86_64'
          if not os.path.exists(os.path.join(NDK_DIR, 'prebuilt', host_tag)):
              host_tag = 'windows'
