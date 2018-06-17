@@ -95,14 +95,13 @@ bash -lc 'pacman --needed --force --noconfirm -Suy'
 dash -c /usr/bin/rebaseall -p
 rem bash -lc 'pacman --noconfirm -S gcc binutils bison wget git rsync libxml2-devel libxslt-devel libxslt-python libxml2-python python2 python2-pip python2-py'
 bash -lc 'pacman --needed --force --noconfirm -S wget'
-bash -lc 'pacman --needed --force --noconfirm -S libxslt-devel libxml2-devel'
+bash -lc 'pacman --needed --force --noconfirm -S libxml2-devel libxslt-devel'
 bash -lc 'pacman --needed --force --noconfirm -S autogen'
 bash -lc 'pacman --needed --force --noconfirm -S automake-wrapper'
 bash -lc 'pacman --needed --force --noconfirm -S patch patchutils'
 bash -lc 'pacman --needed --force --noconfirm -S diffstat diffutils'
 bash -lc 'pacman --needed --force --noconfirm -S nano dos2unix'
 bash -lc 'pacman --needed --force --noconfirm -S zip unzip'
-bash -lc 'pacman --needed --force --noconfirm -S expect'
 dash -c /usr/bin/rebaseall -p
 bash -lc 'pacman --noconfirm -S make'
 bash -lc 'pacman --noconfirm -S cmake'
@@ -114,7 +113,9 @@ echo ----------------------------------------
 dash -c /usr/bin/rebaseall -p
 bash -lc 'cp -f /usr/bin/python2 /usr/bin/python'
 bash -lc 'pip2 install --user numpy'
-bash -lc 'pip2 install --user future lxml'
+bash -lc 'pip2 install --user future'
+bash -lc 'cp -rf /usr/include/libxml2/libxml/* /usr/include/libxml2/'
+bash -lc 'pip2 install --user lxml'
 bash -lc 'pip2 install --user empy catkin_pkg'
 
 bash -lc 'pacman --needed -S --force --noconfirm rebase'
