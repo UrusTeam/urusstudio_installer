@@ -74,6 +74,7 @@ busybox cp ../install_genromfs.sh usr/bin/
 busybox cp ../android usr/bin/
 busybox cp ../download_android_tools usr/bin/
 busybox cp ../ndk-build usr/bin/
+busybox cp ../install_pythondeps.sh usr/bin/install_pythondeps.sh
 mkdir archives
 busybox cp -rf ../packages archives/
 
@@ -111,13 +112,6 @@ echo Installation continue please wait...
 echo ----------------------------------------
 
 dash -c /usr/bin/rebaseall -p
-bash -lc 'cp -f /usr/bin/python2 /usr/bin/python'
-bash -lc 'pip2 install --user numpy'
-bash -lc 'pip2 install --user future'
-bash -lc 'cp -rf /usr/include/libxml2/libxml/* /usr/include/libxml2/'
-bash -lc 'pip2 install --user lxml'
-bash -lc 'pip2 install --user empy catkin_pkg'
-
 bash -lc 'pacman --needed -S --force --noconfirm rebase'
 dash -c 'rm -f ../../dir ../../.BUILDINFO ../../.INSTALL ../../.MTREE ../../.PKGINFO'
 
@@ -129,6 +123,7 @@ chdir usr/bin/
 dash -c /usr/bin/rebaseall -p
 dash -c ./download_toolchain.sh
 dash -c ./install_genromfs.sh
+dash -lc '/usr/bin/install_pythondeps.sh'
 chdir ../../
 
 echo ----------------------------------------
