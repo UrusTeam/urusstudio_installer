@@ -1,5 +1,5 @@
 #!/bin/sh
 
-/system/urus/bin/urusstudio
+/system/urus/bin/urusstudio --multiple-instance "$@"
 
 exit 0
