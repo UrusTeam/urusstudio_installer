@@ -1,3 +1,4 @@
+[![HitCount](http://hits.dwyl.io/UrusTeam/urusstudio_installer.svg)](http://hits.dwyl.io/UrusTeam/urusstudio_installer)
 # Urus Studio Intaller and Deployment.
 
 Author: Hiroshi Takey Franco, 2016 - 2018, htakey@gmail.com.
