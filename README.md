@@ -1,4 +1,5 @@
-[![HitCount](http://hits.dwyl.io/UrusTeam/urusstudio_installer.svg)](http://hits.dwyl.io/UrusTeam/urusstudio_installer)
+[![HitCount](http://hits.dwyl.io/UrusTeam/urusstudio_installer.svg)](http://hits.dwyl.io/UrusTeam/urusstudio_installer) [![Build status](https://ci.appveyor.com/api/projects/status/k4wxemqg6j3wklw8/branch/master-win32?svg=true)](https://ci.appveyor.com/project/hiro2233/urusstudio-installer/branch/master-win32)
+
 # Urus Studio Intaller and Deployment.
 
 Author: Hiroshi Takey Franco, 2016 - 2018, htakey@gmail.com.
