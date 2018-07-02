@@ -65,6 +65,9 @@ if [ $RETOK != 0 ] ; then
     tar -xvzf ../archives/host-linux32-wx-2.8-urus-gtk2.tar.gz -C /system/urus
     tar -xvzf ../archives/host-linux32-wx2.8-gtk2-urusstudio.tar.gz -C /system/urus
     tar -xvzf ../archives/host-linux32-avr-gcc.tar.gz -C /system/urus
+	export PATH=/system/urus/bin:$PATH
+	avr-gcc -v
+	i686-urus-linux-gnu-gcc -v
     exit 0
 else
     #rm -rf /archives
