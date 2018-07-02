@@ -1,4 +1,4 @@
-[![HitCount](http://hits.dwyl.io/UrusTeam/urusstudio_installer.svg)](http://hits.dwyl.io/UrusTeam/urusstudio_installer) [![Build status](https://ci.appveyor.com/api/projects/status/k4wxemqg6j3wklw8/branch/master-win32?svg=true)](https://ci.appveyor.com/project/hiro2233/urusstudio-installer/branch/master-win32)
+[![Build Status](https://semaphoreci.com/api/v1/urussystem/urusstudio_installer/branches/master-linux32/badge.svg)](https://semaphoreci.com/urussystem/urusstudio_installer) [![Build status](https://ci.appveyor.com/api/projects/status/k4wxemqg6j3wklw8/branch/master-win32?svg=true)](https://ci.appveyor.com/project/hiro2233/urusstudio-installer/branch/master-win32)  [![HitCount](http://hits.dwyl.io/UrusTeam/urusstudio_installer.svg)](http://hits.dwyl.io/UrusTeam/urusstudio_installer)
 
 # Urus Studio Intaller and Deployment.
 
