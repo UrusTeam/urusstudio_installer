@@ -27,3 +27,6 @@ $SCOWPWRCMD $YESNOCMD install $BASEPKG
 
 pip install --user future lxml
 pip install --user empy catkin_pkg
+
+exit 0
+
