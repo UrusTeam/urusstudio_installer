@@ -7,6 +7,7 @@ cd system
 cp -f ../start_urusstudio bin/
 cp -f ../download_android_tools bin/
 mkdir -p archives
+cp -rf ../archives/urusstudio archives/
 
 echo ----------------------------------------
 echo Install done!
