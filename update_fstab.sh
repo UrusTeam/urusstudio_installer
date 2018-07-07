@@ -15,6 +15,10 @@ if [ -e /etc/fstab ] ; then
         printf "\nexport ACLOCAL_FLAGS=-I/system/urus/share/aclocal:"$"ACLOCAL_FLAGS\n" >> ~/.profile
         #printf "export LD_LIBRARY_PATH=/system/urus/lib:"$"LD_LIBRARY_PATH\n" >> ~/.profile
         printf "export PATH=/system/urus/bin:"$"PATH\n" >> ~/.profile
+        printf "/system/urus/i686-pc-linux-gnu/lib\n" >> /etc/ld.so.conf.d/i686-urus-linux-gnu.conf
+        printf "/system/urus/lib\n" >> /etc/ld.so.conf.d/i686-urus-linux-gnu.conf
+        cp -f $(pwd)/system/i686-pc-linux-gnu/lib/*.py ../archives/
+        ldconfig
         printf "URUS path bind INSTALLED! on /etc/fstab\n"
     fi
     mount /system/urus
