@@ -8,7 +8,7 @@ fi
 ./update_fstab.sh
 
 BASEPKG="automake gcc g++ libgtk2.0-0 libgtk2.0-dev git gamin libtool autoconf libgamin0 libgamin-dev python2.7 python2.7-dev build-essential \
-         libxslt1-dev libxml2-dev python-pip python-dev zlib1g-dev cmake cmake-data"
+         libxslt1-dev libxml2-dev python-pip python-dev zlib1g-dev cmake cmake-data wget ca-certificates gtk2-engines:i386 libgtk2.0-0:i386"
 
 YESNOCMD=""
 
@@ -16,10 +16,15 @@ PLATOS=`uname -a`
 if [ `printf "$PLATOS" | grep -ri - -e "ubuntu" | wc -l` = 1 ] ; then
     SCOWPWRCMD="apt-get"
     YESNOCMD="-qqy"
+    sudo add-apt-repository ppa:openjdk-r/ppa -y
+    sudo apt-get update YESNOCMD
+    sudo apt-get install openjdk-8-jdk
     echo ubuntu
 elif [ `printf "$PLATOS" | grep -ri - -e "debian" | wc -l` = 1 ] ; then
     SCOWPWRCMD="apt-get"
     YESNOCMD="-qqy"
+    sudo apt-get update YESNOCMD
+    sudo apt-get install openjdk-8-jdk
    echo debian
 fi
 
