@@ -16,17 +16,19 @@ PLATOS=`uname -a`
 if [ `printf "$PLATOS" | grep -ri - -e "ubuntu" | wc -l` = 1 ] ; then
     SCOWPWRCMD="apt-get"
     YESNOCMD="-qqy"
-    sudo dpkg --add-architecture i386
     sudo add-apt-repository ppa:openjdk-r/ppa -y
-    sudo apt-get update YESNOCMD
-    sudo apt-get install openjdk-8-jdk YESNOCMD
+    sudo apt-get update $YESNOCMD
+    sudo apt-get install openjdk-8-jdk $YESNOCMD
+    sudo dpkg --add-architecture i386
+    sudo apt-get update $YESNOCMD
     echo ubuntu
 elif [ `printf "$PLATOS" | grep -ri - -e "debian" | wc -l` = 1 ] ; then
     SCOWPWRCMD="apt-get"
     YESNOCMD="-qqy"
+    sudo apt-get update $YESNOCMD
+    sudo apt-get install openjdk-8-jdk $YESNOCMD
     sudo dpkg --add-architecture i386
-    sudo apt-get update YESNOCMD
-    sudo apt-get install openjdk-8-jdk YESNOCMD
+    sudo apt-get update $YESNOCMD
    echo debian
 fi
 
