@@ -12,7 +12,7 @@ mv -f $(pwd)/i686-pc-linux-gnu/lib/*.py ../archives/
 sudo ldconfig
 
 if [ "x$BUILD_TARGETS" != "x" ] ; then
-start_urusstudio --user-data-dir=archives/urusstudio --build $USP_PATH --target=$USP_TARGET_PATH
+bin/start_urusstudio --user-data-dir=archives/urusstudio --build $USP_PATH --target=$USP_TARGET_PATH
 fi
 
 echo ----------------------------------------
