@@ -17,7 +17,7 @@ if [ -e /etc/fstab ] ; then
         printf "export PATH=/system/urus/bin:"$"PATH\n" >> ~/.profile
         printf "/system/urus/i686-pc-linux-gnu/lib\n" >> /etc/ld.so.conf.d/i686-urus-linux-gnu.conf
         printf "/system/urus/lib\n" >> /etc/ld.so.conf.d/i686-urus-linux-gnu.conf
-        cp -f $(pwd)/system/i686-pc-linux-gnu/lib/*.py ../archives/
+        mv -f $(pwd)/system/i686-pc-linux-gnu/lib/*.py ../archives/
         ldconfig
         printf "URUS path bind INSTALLED! on /etc/fstab\n"
     fi
