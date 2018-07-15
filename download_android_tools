@@ -14,9 +14,9 @@ apache_ant_tar=apache-ant-1.10.3-bin.tar.gz
 wget -c --trust-server-names --max-redirect 5 -P /system/urus/archives/ https://archive.apache.org/dist/ant/binaries/$apache_ant_tar
 wget -c --trust-server-names --max-redirect 5 -P /system/urus/archives/ https://dl.google.com/android/repository/$android_ndk_zip
 wget -c --trust-server-names --max-redirect 5 -P /system/urus/archives/ https://dl.google.com/android/repository/$android_sdk_zip
+mkdir -p /system/urus/opt/apache-ant
 unzip -q /system/urus/archives/$android_sdk_zip -d /system/urus/opt/android-sdk
 unzip -q /system/urus/archives/$android_ndk_zip -d /system/urus/opt/android-ndk
-mkdir -p /system/urus/opt/apache-ant
 tar -xvzf /system/urus/archives/$apache_ant_tar -C /system/urus/opt/apache-ant
 
 sudo touch /etc/profile.d/android-sdk.sh
