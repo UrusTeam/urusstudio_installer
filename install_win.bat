@@ -16,7 +16,7 @@ echo ----------------------------------------
 echo Installing MSYS2 subsystem base...
 echo ----------------------------------------
 
-busybox tar -xvf ../archives/msys2-base-i686-20161025.tar.xz -C ../
+busybox tar -xvf ../archives/msys2-base-i686-20180531.tar.xz -C ../
 
 busybox cp -f ./busybox.exe ../
 chdir ../
@@ -32,8 +32,8 @@ busybox cp -f ./busybox.exe system/
 set PATH=%~dp0\system;%PATH%
 chdir system/
 
-busybox tar -xvf ../archives/gcc-6.4.0-3-i686.pkg.tar.xz
-busybox tar -xvf ../archives/gcc-libs-6.4.0-3-i686.pkg.tar.xz
+busybox tar -xvf ../archives/gcc-6.4.0-1-i686.pkg.tar.xz
+busybox tar -xvf ../archives/gcc-libs-7.3.0-1-i686.pkg.tar.xz
 busybox tar -xvf ../archives/gdb-7.11.1-1-i686.pkg.tar.xz
 busybox tar -xvf ../archives/binutils-2.28-1-i686.pkg.tar.xz
 busybox tar -xvf ../archives/python2-2.7.13-1-i686.pkg.tar.xz
@@ -52,7 +52,7 @@ rem busybox tar -xvf ../archives/libxslt-devel-1.1.30-1-i686.pkg.tar.xz
 rem busybox tar -xvf ../archives/libxslt-python-1.1.30-1-i686.pkg.tar.xz
 busybox tar -xvf ../archives/rsync-3.1.2-2-i686.pkg.tar.xz
 busybox tar -xvf ../archives/git-2.15.0-1-i686.pkg.tar.xz
-busybox tar -xvf ../archives/wget-1.19.1-3-i686.pkg.tar.xz
+busybox tar -xvf ../archives/wget-1.19.1-1-i686.pkg.tar.xz
 busybox tar -xvf ../archives/tar-1.29-1-i686.pkg.tar.xz
 busybox tar -xvf ../archives/mpfr-4.0.0.1-3-i686.pkg.tar.xz
 busybox tar -xvf ../archives/mpfr-devel-4.0.0.1-3-i686.pkg.tar.xz
@@ -82,20 +82,19 @@ chdir usr/bin/
 
 dash -c /usr/bin/rebaseall -p
 bash -lc 'echo updating msys base...'
-bash -lc 'pacman --noconfirm -Sy'
 
 echo ----------------------------------------
 echo Updating core package manager and
 echo Installing Urus Studio dependencies...
 echo ----------------------------------------
 
-bash -lc 'pacman --noconfirm -R catgets libcatgets'
-dash -c '/usr/bin/pacman --needed --force --noconfirm -Suy'
+rem bash -lc 'pacman --noconfirm -R catgets libcatgets'
+rem dash -c '/usr/bin/pacman --needed --force --noconfirm -Sy'
 dash -c /usr/bin/rebaseall -p
-bash -lc 'pacman --needed --force --noconfirm -Suy'
+rem bash -lc 'pacman --needed --force --noconfirm -Sy'
 dash -c /usr/bin/rebaseall -p
 rem bash -lc 'pacman --noconfirm -S gcc binutils bison wget git rsync libxml2-devel libxslt-devel libxslt-python libxml2-python python2 python2-pip python2-py'
-bash -lc 'pacman --needed --force --noconfirm -S wget'
+rem bash -lc 'pacman --needed --force --noconfirm -S wget'
 bash -lc 'pacman --needed --force --noconfirm -S libxml2-devel libxslt-devel'
 bash -lc 'pacman --needed --force --noconfirm -S autogen'
 bash -lc 'pacman --needed --force --noconfirm -S automake-wrapper'
@@ -104,15 +103,14 @@ bash -lc 'pacman --needed --force --noconfirm -S diffstat diffutils'
 bash -lc 'pacman --needed --force --noconfirm -S nano dos2unix'
 bash -lc 'pacman --needed --force --noconfirm -S zip unzip'
 dash -c /usr/bin/rebaseall -p
-bash -lc 'pacman --noconfirm -S make'
-bash -lc 'pacman --noconfirm -S cmake'
+bash -lc 'pacman --needed --force --noconfirm -S make'
+bash -lc 'pacman --needed --force --noconfirm -S cmake'
 
 echo ----------------------------------------
 echo Installation continue please wait...
 echo ----------------------------------------
 
 dash -c /usr/bin/rebaseall -p
-bash -lc 'pacman --needed -S --force --noconfirm rebase'
 dash -c 'rm -f ../../dir ../../.BUILDINFO ../../.INSTALL ../../.MTREE ../../.PKGINFO'
 
 chdir ../../
