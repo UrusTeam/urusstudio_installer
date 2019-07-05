@@ -4,8 +4,8 @@ busybox sh -c '
 
     export REPOURL=$(cat ./baserepo)
 
-    wget -P ../archives $REPOURL/gcc-6.4.0-3-i686.pkg.tar.xz
-    wget -P ../archives $REPOURL/gcc-libs-6.4.0-3-i686.pkg.tar.xz
+    wget -P ../archives $REPOURL/gcc-6.4.0-1-i686.pkg.tar.xz
+    wget -P ../archives $REPOURL/gcc-libs-7.3.0-1-i686.pkg.tar.xz
     wget -P ../archives $REPOURL/gdb-7.11.1-1-i686.pkg.tar.xz
     wget -P ../archives $REPOURL/binutils-2.28-1-i686.pkg.tar.xz
     wget -P ../archives $REPOURL/python2-2.7.13-1-i686.pkg.tar.xz
@@ -24,7 +24,7 @@ busybox sh -c '
 #   wget -P ../archives $REPOURL/libxslt-python-1.1.30-1-i686.pkg.tar.xz
     wget -P ../archives $REPOURL/rsync-3.1.2-2-i686.pkg.tar.xz
     wget -P ../archives $REPOURL/git-2.15.0-1-i686.pkg.tar.xz
-    wget -P ../archives $REPOURL/wget-1.19.1-3-i686.pkg.tar.xz
+    wget -P ../archives $REPOURL/wget-1.19.1-1-i686.pkg.tar.xz
     wget -P ../archives $REPOURL/tar-1.29-1-i686.pkg.tar.xz
     wget -P ../archives $REPOURL/mpfr-4.0.0.1-3-i686.pkg.tar.xz
     wget -P ../archives $REPOURL/mpfr-devel-4.0.0.1-3-i686.pkg.tar.xz
