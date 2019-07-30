@@ -18,3 +18,7 @@
 *.BUILDINFO
 *.MTREE
 *.PKGINFO
+
+/system
+/archives
+/system_temp
