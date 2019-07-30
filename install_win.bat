@@ -2,6 +2,7 @@
 
 set PATH=%~dp0\system;
 set PATH=%~dp0\system\usr\bin;%PATH%
+set PATH=%~dp0\system\home\urus\.local\bin;%PATH%
 set MSYSTEM=MSYS
 chdir system/
 
@@ -105,6 +106,7 @@ bash -lc 'pacman --needed --force --noconfirm -S zip unzip'
 dash -c /usr/bin/rebaseall -p
 bash -lc 'pacman --needed --force --noconfirm -S make'
 bash -lc 'pacman --needed --force --noconfirm -S cmake'
+bash -lc 'pacman --needed --force --noconfirm -S vim'
 
 echo ----------------------------------------
 echo Installation continue please wait...
