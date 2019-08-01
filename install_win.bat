@@ -2,7 +2,6 @@
 
 set PATH=%~dp0\system;
 set PATH=%~dp0\system\usr\bin;%PATH%
-set PATH=%~dp0\system\home\urus\.local\bin;%PATH%
 set MSYSTEM=MSYS
 chdir system/
 
@@ -27,6 +26,8 @@ busybox rm -f ./msys32/mingw32.exe
 busybox rm -f ./msys32/mingw32.ini
 busybox rm -f ./msys32/mingw64.exe
 busybox rm -f ./msys32/mingw64.ini
+busybox rm -f ./msys32/msys2_shell.cmd
+busybox rm -f ./msys32/msys2.ico
 busybox mv system/ system_temp/
 busybox mv msys32/ system/
 busybox cp -f ./busybox.exe system/
@@ -76,6 +77,8 @@ busybox cp ../android usr/bin/
 busybox cp ../download_android_tools usr/bin/
 busybox cp ../ndk-build usr/bin/
 busybox cp ../install_pythondeps.sh usr/bin/install_pythondeps.sh
+busybox cp ../packages/urus_shell/appurus.ico .
+busybox cp ../packages/urus_shell/urus_shell.cmd .
 mkdir archives
 busybox cp -rf ../packages archives/
 
