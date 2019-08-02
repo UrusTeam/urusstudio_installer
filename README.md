@@ -49,7 +49,7 @@ On the second stage goes [*Msys2*](https://github.com/msys2), this one is a Posi
 
 | Host | Pre-Release | Release |
 |- |--------|--------|
-| 32 Bits |[![GitHub Pre-Releases](https://img.shields.io/github/downloads-pre/UrusTeam/urusstudio_installer/v1.0.62-win32/total)](https://github.com/UrusTeam/urusstudio_installer/archive/v1.0.0-win32.zip) | [![Github Releases](https://img.shields.io/github/downloads/UrusTeam/urusstudio_installer/latest/total.svg)]() |
+| 32 Bits |[![GitHub Pre-Releases](https://img.shields.io/github/downloads-pre/UrusTeam/urusstudio_installer/v1.0.62-win32/total)](https://github.com/UrusTeam/urusstudio_installer/releases/download/v1.0.62-win32/urusstudio_installer-master-win32.zip) | [![Github Releases](https://img.shields.io/github/downloads/UrusTeam/urusstudio_installer/latest/total.svg)]() |
 
 ### On GNU/Linux (Debian/Ubuntu)
 
@@ -68,7 +68,7 @@ Installation perform natively on the host terminal, this will try to get the bas
 
 | Host  | Pre-Release | Release |
 | - |--------|--------|
-| 32 Bits  | [![GitHub Pre-Releases](https://img.shields.io/github/downloads-pre/UrusTeam/urusstudio_installer/v1.0.22-linux32/total)](https://github.com/UrusTeam/urusstudio_installer/archive/v1.0.0-linux32.zip) | [![Github Releases](https://img.shields.io/github/downloads/UrusTeam/urusstudio_installer/latest/total.svg)]() |
+| 32 Bits  | [![GitHub Pre-Releases](https://img.shields.io/github/downloads-pre/UrusTeam/urusstudio_installer/v1.0.22-linux32/total)](https://github.com/UrusTeam/urusstudio_installer/releases/download/v1.0.22-linux32/urusstudio_installer-master-linux32.zip) | [![Github Releases](https://img.shields.io/github/downloads/UrusTeam/urusstudio_installer/latest/total.svg)]() |
 
 ## Warranty
 GPL components are licensed without warranties of any kinds, either express or implied warranties, including without limitation the implied warranty of merchantability and fitness for a particular purpose. The entire risk as the quality and performance of these components is with you. Please check the respective license agreement for more details.
