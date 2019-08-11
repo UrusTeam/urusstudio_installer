@@ -8,7 +8,8 @@ fi
 ./update_fstab.sh
 
 BASEPKG="automake gcc g++ libgtk2.0-0 libgtk2.0-dev git gamin libtool autoconf libgamin0 libgamin-dev python2.7 python2.7-dev build-essential \
-         libxslt1-dev libxml2-dev python-pip python-dev zlib1g-dev cmake cmake-data wget ca-certificates gtk2-engines:i386 libgtk2.0-0:i386"
+         libxslt1-dev libxml2-dev python-pip python-dev zlib1g-dev cmake cmake-data wget ca-certificates gtk2-engines:i386 libgtk2.0-0:i386 \
+         libbz2-dev"
 
 YESNOCMD=""
 
