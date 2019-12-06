@@ -1,13 +1,21 @@
 #!/bin/sh
 umask 002
-wget -c --trust-server-names --max-redirect 5 -P /archives/ https://sourceforge.net/projects/urus-buildroot.urus.p/files/v1.0.0/host-win32-i686-mingw32.tar.gz.md5/download
-wget -c --trust-server-names --max-redirect 5 -P /archives/ https://sourceforge.net/projects/urus-buildroot.urus.p/files/v1.0.0/host-win32-i686-mingw32.tar.gz/download
-wget -c --trust-server-names --max-redirect 5 -P /archives/ https://sourceforge.net/projects/urus-buildroot.urus.p/files/v1.0.0/host-win32-avr-gcc.tar.gz.md5/download
-wget -c --trust-server-names --max-redirect 5 -P /archives/ https://sourceforge.net/projects/urus-buildroot.urus.p/files/v1.0.0/host-win32-avr-gcc.tar.gz/download
-wget -c --trust-server-names --max-redirect 5 -P /archives/ https://sourceforge.net/projects/urus-buildroot.urus.p/files/v1.0.0/wx-urus/wx-2.8-urus-msw.tar.gz.md5/download
-wget -c --trust-server-names --max-redirect 5 -P /archives/ https://sourceforge.net/projects/urus-buildroot.urus.p/files/v1.0.0/wx-urus/wx-2.8-urus-msw.tar.gz/download
-wget -c --trust-server-names --max-redirect 5 -P /archives/ https://sourceforge.net/projects/urus-buildroot.urus.p/files/v1.0.0/urusstudio/host-win32-urusstudio.tar.gz.md5/download
-wget -c --trust-server-names --max-redirect 5 -P /archives/ https://sourceforge.net/projects/urus-buildroot.urus.p/files/v1.0.0/urusstudio/host-win32-urusstudio.tar.gz/download
+wget -c --trust-server-names --max-redirect 5 -P /archives/ https://sourceforge.net/projects/urus-buildroot.urus.p/files/v1.0.0/host-win32-i686-mingw32.tar.gz.md5/download &>/dev/null
+printf "*"
+wget -c --trust-server-names --max-redirect 5 -P /archives/ https://sourceforge.net/projects/urus-buildroot.urus.p/files/v1.0.0/host-win32-i686-mingw32.tar.gz/download &>/dev/null
+printf "*"
+wget -c --trust-server-names --max-redirect 5 -P /archives/ https://sourceforge.net/projects/urus-buildroot.urus.p/files/v1.0.0/host-win32-avr-gcc.tar.gz.md5/download &>/dev/null
+printf "*"
+wget -c --trust-server-names --max-redirect 5 -P /archives/ https://sourceforge.net/projects/urus-buildroot.urus.p/files/v1.0.0/host-win32-avr-gcc.tar.gz/download &>/dev/null
+printf "*"
+wget -c --trust-server-names --max-redirect 5 -P /archives/ https://sourceforge.net/projects/urus-buildroot.urus.p/files/v1.0.0/wx-urus/wx-2.8-urus-msw.tar.gz.md5/download &>/dev/null
+printf "*"
+wget -c --trust-server-names --max-redirect 5 -P /archives/ https://sourceforge.net/projects/urus-buildroot.urus.p/files/v1.0.0/wx-urus/wx-2.8-urus-msw.tar.gz/download &>/dev/null
+printf "*"
+wget -c --trust-server-names --max-redirect 5 -P /archives/ https://sourceforge.net/projects/urus-buildroot.urus.p/files/v1.0.0/urusstudio/host-win32-urusstudio.tar.gz.md5/download &>/dev/null
+printf "*"
+wget -c --trust-server-names --max-redirect 5 -P /archives/ https://sourceforge.net/projects/urus-buildroot.urus.p/files/v1.0.0/urusstudio/host-win32-urusstudio.tar.gz/download &>/dev/null
+printf "*\n"
 
 cd /archives
 
@@ -32,23 +40,33 @@ if [ `printf "$RETOK" | grep -ri - -e "urusstudio" | wc -l` = 0 ] ; then
 fi
 
 RETOK=1
-MSYS=winsymlinks:nativestrict
+export MSYS=winsymlinks:nativestrict
 
 cd /
 
 if [ $RETOK != 0 ] ; then
     printf "MD5 ok!\n"
     sleep 2
-    /busybox tar -xvzf /archives/host-win32-i686-mingw32.tar.gz -C ./mingw32/
-    /usr/bin/tar -xvzf /archives/host-win32-i686-mingw32.tar.gz -C /mingw32/
-    /busybox tar -xvzf /archives/host-win32-avr-gcc.tar.gz -C ./mingw32/
-    /usr/bin/tar -xvzf /archives/host-win32-avr-gcc.tar.gz -C ./mingw32/
-    /busybox tar -xvzf /archives/wx-2.8-urus-msw.tar.gz -C ./
-    /usr/bin/tar -xvzf /archives/wx-2.8-urus-msw.tar.gz -C /system/urus/
-    /busybox tar -xvzf /archives/host-win32-urusstudio.tar.gz -C ./
-    /busybox cp -f /mingw32/lib/libwinpthread-1.dll ./bin/
-    /busybox cp -f /mingw32/lib/libwinpthread-1.dll ./mingw32/bin/
-    /usr/bin/tar -xvzf /archives/host-win32-urusstudio.tar.gz -C /system/urus/
+    /busybox tar -xvzf /archives/host-win32-i686-mingw32.tar.gz -C ./mingw32/ &>/dev/null
+    printf "*"
+    /usr/bin/tar -xvzf /archives/host-win32-i686-mingw32.tar.gz -C /mingw32/ &>/dev/null
+    printf "*"
+    /busybox tar -xvzf /archives/host-win32-avr-gcc.tar.gz -C ./mingw32/ &>/dev/null
+    printf "*"
+    /usr/bin/tar -xvzf /archives/host-win32-avr-gcc.tar.gz -C ./mingw32/ &>/dev/null
+    printf "*"
+    /busybox tar -xvzf /archives/wx-2.8-urus-msw.tar.gz -C ./ &>/dev/null
+    printf "*"
+    /usr/bin/tar -xvzf /archives/wx-2.8-urus-msw.tar.gz -C /system/urus/ &>/dev/null
+    printf "*"
+    /busybox tar -xvzf /archives/host-win32-urusstudio.tar.gz -C ./ &>/dev/null
+    printf "*"
+    /busybox cp -f /mingw32/lib/libwinpthread-1.dll ./bin/ &>/dev/null
+    printf "*"
+    /busybox cp -f /mingw32/lib/libwinpthread-1.dll ./mingw32/bin/ &>/dev/null
+    printf "*"
+    /usr/bin/tar -xvzf /archives/host-win32-urusstudio.tar.gz -C /system/urus/ &>/dev/null
+    printf "*\n\n"
     #/busybox rm -f /mingw32/bin/aclocal*
     #/busybox rm -f /mingw32/bin/automake*
     exit 0
