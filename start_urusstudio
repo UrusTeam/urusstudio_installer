@@ -1,5 +1,5 @@
 #!/bin/sh
 
-/system/urus/bin/urusstudio
+/start_urusstudio "$@"
 
 exit 0
