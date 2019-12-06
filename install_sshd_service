@@ -1,0 +1,73 @@
+#!/bin/sh
+
+set -e
+
+#
+# Setting up
+#
+
+PRIV_USER=sshd_server
+PRIV_NAME="Privileged user for sshd"
+
+EMPTY_DIR=/var/empty
+
+#
+# generate host ssh keys
+#
+
+/usr/bin/ssh-keygen -N "" -h -q -f /etc/ssh/ssh_host_rsa_key <<< n &>/dev/null || true
+
+#
+# Create privileged cyg_server user with random password
+#
+
+echo
+
+tmp_pass="$(tr -dc 'a-zA-Z0-9' < /dev/urandom | dd count=14 bs=1 2>/dev/null)"
+
+add="$(if ! net user "${PRIV_USER}" &>/dev/null; then echo "//add"; fi)"
+if ! net user "${PRIV_USER}" "${tmp_pass}" ${add} //fullname:"${PRIV_NAME}" \
+              //homedir:"$(cygpath -w ${EMPTY_DIR})" //yes &>/dev/null; then
+    tput setaf 3;  echo "ERROR: Unable to create Windows user -> '${PRIV_USER}'"; tput sgr0; echo
+    exit 1
+fi
+
+# Add user to the Administrators group if necessary
+admingroup="$(mkgroup -l | awk -F: '{if ($2 == "S-1-5-32-544") print $1;}')"
+if ! (net localgroup "${admingroup}" &>/dev/null | grep -q '^'"${PRIV_USER}"'\>'); then
+    if ! net localgroup "${admingroup}" "${PRIV_USER}" //add &>/dev/null; then
+        tput setaf 3; echo "ERROR: Unable to add user -> '${PRIV_USER}' to group -> '${admingroup}'"; tput sgr0; echo
+        exit 1
+    fi
+fi
+
+# Infinite passwd expiry
+passwd -e "${PRIV_USER}" &>/dev/null
+
+# set required privileges
+for flag in SeAssignPrimaryTokenPrivilege SeCreateTokenPrivilege \
+  SeTcbPrivilege SeDenyRemoteInteractiveLogonRight SeServiceLogonRight; do
+    if ! /mingw32/bin/editrights -a "${flag}" -u "${PRIV_USER}"; then
+        tput setaf 3; echo "ERROR: Unable to give '${flag}' rights to user -> '${PRIV_USER}'"; tput sgr0; echo
+        exit 1
+    fi
+done
+
+#
+# Finally, register service with cygrunsrv and start it
+#
+
+cygrunsrv -R urus_sshd &>/dev/null || true
+cygrunsrv -I urus_sshd -d "URUS sshd server" -p \
+          /usr/bin/sshd -a "-D -e" -y tcpip -u "${PRIV_USER}" -w "${tmp_pass}" &>/dev/null
+
+# The SSH service should start automatically when Windows is rebooted. You can
+# manually restart the service by running `cygrunsrv -E urus_sshd` + `cygrunsrv -S urus_sshd`
+if ! cygrunsrv -S urus_sshd; then
+    tput setaf 3; echo "ERROR: Unable to start 'urus_sshd' service"; tput sgr0; echo
+    exit 1
+else
+    tput setaf 2;  echo "Service ssh server 'urus_sshd' installed!"; tput sgr0; echo
+fi
+
+sleep 3
