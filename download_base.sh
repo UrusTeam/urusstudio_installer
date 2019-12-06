@@ -1,10 +1,8 @@
 #!/bin/sh
 
-busybox sh -c '
-
     export REPOURL=$(cat ./baserepo)
 
-    wget -P ../archives $REPOURL/gcc-6.4.0-1-i686.pkg.tar.xz
+    wget -P ../archives $REPOURL/gcc-7.3.0-1-i686.pkg.tar.xz
     wget -P ../archives $REPOURL/gcc-libs-7.3.0-1-i686.pkg.tar.xz
     wget -P ../archives $REPOURL/gdb-7.11.1-1-i686.pkg.tar.xz
     wget -P ../archives $REPOURL/binutils-2.28-1-i686.pkg.tar.xz
@@ -22,19 +20,20 @@ busybox sh -c '
     wget -P ../archives $REPOURL/xmlto-0.0.28-1-i686.pkg.tar.xz
 #   wget -P ../archives $REPOURL/libxslt-devel-1.1.30-1-i686.pkg.tar.xz
 #   wget -P ../archives $REPOURL/libxslt-python-1.1.30-1-i686.pkg.tar.xz
-    wget -P ../archives $REPOURL/rsync-3.1.2-2-i686.pkg.tar.xz
-    wget -P ../archives $REPOURL/git-2.15.0-1-i686.pkg.tar.xz
-    wget -P ../archives $REPOURL/wget-1.19.1-1-i686.pkg.tar.xz
-    wget -P ../archives $REPOURL/tar-1.29-1-i686.pkg.tar.xz
+    wget -P ../archives $REPOURL/rsync-3.1.3-1-i686.pkg.tar.xz
+    wget -P ../archives $REPOURL/git-2.17.0-1-i686.pkg.tar.xz
+    wget -P ../archives $REPOURL/wget-1.19.4-1-i686.pkg.tar.xz
+    wget -P ../archives $REPOURL/tar-1.30-1-i686.pkg.tar.xz
     wget -P ../archives $REPOURL/mpfr-4.0.0.1-3-i686.pkg.tar.xz
     wget -P ../archives $REPOURL/mpfr-devel-4.0.0.1-3-i686.pkg.tar.xz
     wget -P ../archives $REPOURL/mpc-1.1.0-1-i686.pkg.tar.xz
     wget -P ../archives $REPOURL/mpc-devel-1.1.0-1-i686.pkg.tar.xz
-    wget -P ../archives $REPOURL/msys2-w32api-runtime-5.0.0.4961.e09dd4ca-1-i686.pkg.tar.xz
-    wget -P ../archives $REPOURL/msys2-w32api-headers-5.0.0.4961.e09dd4ca-1-i686.pkg.tar.xz
+    wget -P ../archives $REPOURL/msys2-w32api-runtime-6.0.0.5097.36d7b92b-1-i686.pkg.tar.xz
+    wget -P ../archives $REPOURL/msys2-w32api-headers-6.0.0.5097.36d7b92b-1-i686.pkg.tar.xz
     wget -P ../archives $REPOURL/isl-0.18-1-i686.pkg.tar.xz
     wget -P ../archives $REPOURL/isl-devel-0.18-1-i686.pkg.tar.xz
-    wget -P ../archives $REPOURL/msys2-runtime-devel-2.9.0-2-i686.pkg.tar.xz
-    wget -P ../archives $REPOURL/gmp-devel-6.1.2-1-i686.pkg.tar.xz'
+    wget -P ../archives $REPOURL/msys2-runtime-devel-2.10.0-2-i686.pkg.tar.xz
+    wget -P ../archives $REPOURL/gmp-devel-6.1.2-1-i686.pkg.tar.xz
 
-exit 127
+printf "\n\n"
+exit 0
