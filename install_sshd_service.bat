@@ -5,8 +5,7 @@ set PATH=%~dp0\system\usr\bin;%PATH%
 set SRCPATH=%~dp0
 
 IF EXIST "%SRCPATH%\system\bin\" (
-	pushd %SRCPATH%
-	dash -c ./install_sshd_service
+	busybox su -c "system/usr/bin/bash -lc ./install_sshd_service"
 ) ELSE (
 	echo.
 	echo No bin folder found!
@@ -17,5 +16,3 @@ IF EXIST "%SRCPATH%\system\bin\" (
 	echo      base file structure system
 	echo.
 )
-
-pause

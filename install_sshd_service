@@ -34,7 +34,7 @@ fi
 
 # Add user to the Administrators group if necessary
 admingroup="$(mkgroup -l | awk -F: '{if ($2 == "S-1-5-32-544") print $1;}')"
-if ! (net localgroup "${admingroup}" &>/dev/null | grep -q '^'"${PRIV_USER}"'\>'); then
+if ! (net localgroup "${admingroup}" | grep -q '^'"${PRIV_USER}"'\>'); then
     if ! net localgroup "${admingroup}" "${PRIV_USER}" //add &>/dev/null; then
         tput setaf 3; echo "ERROR: Unable to add user -> '${PRIV_USER}' to group -> '${admingroup}'"; tput sgr0; echo
         exit 1
