@@ -1,11 +1,12 @@
 @echo off
 
+set PATH=%~dp0
 set PATH=%~dp0\system;%PATH%
 set PATH=%~dp0\system\usr\bin;%PATH%
 set SRCPATH=%~dp0
 
 IF EXIST "%SRCPATH%\system\bin\" (
-	busybox su -c "system/usr/bin/bash -lc ./install_sshd_service"
+	busybox sh -c "su -c 'system/usr/bin/bash -lc ./install_sshd_service'"
 ) ELSE (
 	echo.
 	echo No bin folder found!
