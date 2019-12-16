@@ -47,20 +47,20 @@ cd /
 if [ $RETOK != 0 ] ; then
     printf "MD5 ok!\n"
     sleep 2
-    /busybox tar -xvzf /archives/host-win32-i686-mingw32.tar.gz -C ./mingw32/ &>/dev/null
-    printf "*"
+    #/busybox tar -xvzf /archives/host-win32-i686-mingw32.tar.gz -C ./mingw32/ &>/dev/null
+    #printf "*"
     /usr/bin/tar -xvzf /archives/host-win32-i686-mingw32.tar.gz -C /mingw32/ &>/dev/null
     printf "*"
-    /busybox tar -xvzf /archives/host-win32-avr-gcc.tar.gz -C ./mingw32/ &>/dev/null
-    printf "*"
+    #/busybox tar -xvzf /archives/host-win32-avr-gcc.tar.gz -C ./mingw32/ &>/dev/null
+    #printf "*"
     /usr/bin/tar -xvzf /archives/host-win32-avr-gcc.tar.gz -C ./mingw32/ &>/dev/null
     printf "*"
-    /busybox tar -xvzf /archives/wx-2.8-urus-msw.tar.gz -C ./ &>/dev/null
-    printf "*"
+    #/busybox tar -xvzf /archives/wx-2.8-urus-msw.tar.gz -C ./ &>/dev/null
+    #printf "*"
     /usr/bin/tar -xvzf /archives/wx-2.8-urus-msw.tar.gz -C /system/urus/ &>/dev/null
     printf "*"
-    /busybox tar -xvzf /archives/host-win32-urusstudio.tar.gz -C ./ &>/dev/null
-    printf "*"
+    #/busybox tar -xvzf /archives/host-win32-urusstudio.tar.gz -C ./ &>/dev/null
+    #printf "*"
     /busybox cp -f /mingw32/lib/libwinpthread-1.dll ./bin/ &>/dev/null
     printf "*"
     /busybox cp -f /mingw32/lib/libwinpthread-1.dll ./mingw32/bin/ &>/dev/null
