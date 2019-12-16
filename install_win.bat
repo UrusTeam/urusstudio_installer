@@ -18,13 +18,14 @@ IF EXIST .stopinstall (
     exit 0
 )
 
-busybox sh -c "../download_base.sh &>/dev/null"
+busybox sh -c "../download_base.sh"
 
 echo ----------------------------------------
 echo Installing subsystem base...
 echo ----------------------------------------
 
 busybox sh -c "tar -xvf ../archives/msys2-base-i686-20180531.tar.xz -C ../ &>/dev/null"
+busybox printf "*\n"
 busybox sleep 2
 busybox cp -f ./busybox.exe ../
 chdir ../
