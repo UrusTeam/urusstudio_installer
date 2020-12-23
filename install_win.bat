@@ -18,13 +18,13 @@ IF EXIST .stopinstall (
     exit 0
 )
 
-busybox sh -c "../download_base.sh"
+rem busybox sh -c "../download_base.sh"
 
 echo ----------------------------------------
 echo Installing subsystem base...
 echo ----------------------------------------
 
-busybox sh -c "tar -xvJf ../archives/msys2-base-i686-20180531.tar.xz -C ../ &>/dev/null"
+busybox sh -c "tar -xvJf ../archives/msys2-base-i686-20190523.tar.xz -C ../ &>/dev/null"
 busybox printf "*\n"
 busybox sleep 2
 busybox cp -f ./busybox.exe ../
@@ -93,6 +93,7 @@ busybox printf "*\n\n"
 busybox rm -f ../busybox.exe
 busybox cp -f ../rebasecore.sh usr/bin/
 
+busybox cp -f ../su.exe usr/bin/
 busybox cp -f ../download_toolchain.sh usr/bin/
 busybox cp -f ../start_urusstudio usr/bin/
 busybox cp -f ../install_genromfs.sh usr/bin/
@@ -102,6 +103,7 @@ busybox cp -f ../ndk-build usr/bin/
 busybox cp -f ../install_pythondeps.sh usr/bin/install_pythondeps.sh
 busybox cp -f ../packages/urus_shell/appurus.ico .
 busybox cp -f ../packages/urus_shell/urus_shell.cmd .
+busybox cp -rf ../packages/etc .
 busybox mkdir archives
 busybox cp -rf ../packages archives/
 
@@ -109,6 +111,8 @@ chdir usr/bin/
 
 dash -c /usr/bin/rebaseall -p
 bash -lc "echo updating msys base..."
+busybox killall -s KILL dirmngr.exe
+busybox killall -s KILL gpg-agent.exe
 busybox clear
 
 echo ----------------------------------------
@@ -123,33 +127,41 @@ rem bash -lc "pacman --needed --force --noconfirm -Sy"
 dash -c /usr/bin/rebaseall -p
 rem bash -lc "pacman --noconfirm -S gcc binutils bison wget git rsync libxml2-devel libxslt-devel libxslt-python libxml2-python python2 python2-pip python2-py"
 rem bash -lc "pacman --needed --force --noconfirm -S wget"
-bash -lc "pacman --needed --force --noconfirm -S libxml2-devel libxslt-devel &>/dev/null"
+bash -lc "pacman --needed --force --noconfirm -S --disable-download-timeout bison libxml2-devel libxslt-devel &>/dev/null"
 busybox printf "*"
-bash -lc "pacman --needed --force --noconfirm -S openssh &>/dev/null"
+bash -lc "pacman --needed --force --noconfirm -S --disable-download-timeout python2 python2-pip libxslt-python libxml2-python &>/dev/null"
 busybox printf "*"
-bash -lc "pacman --needed --force --noconfirm -Sdd mingw-w64-i686-editrights cygrunsrv &>/dev/null"
+bash -lc "pacman --needed --force --noconfirm -S --disable-download-timeout gcc gdb &>/dev/null"
 busybox printf "*"
-bash -lc "pacman --needed --force --noconfirm -Sdd autogen &>/dev/null"
+bash -lc "pacman --needed --force --noconfirm -S --disable-download-timeout git wget rsync xmlto tar &>/dev/null"
 busybox printf "*"
-bash -lc "pacman --needed --force --noconfirm -Sdd automake-wrapper &>/dev/null"
+bash -lc "pacman --needed --force --noconfirm -S --disable-download-timeout libxml2-devel libxslt-devel &>/dev/null"
 busybox printf "*"
-bash -lc "pacman --needed --force --noconfirm -Sdd patch patchutils &>/dev/null"
+bash -lc "pacman --needed --force --noconfirm -S --disable-download-timeout openssh &>/dev/null"
 busybox printf "*"
-bash -lc "pacman --needed --force --noconfirm -Sdd diffstat diffutils &>/dev/null"
+bash -lc "pacman --needed --force --noconfirm -S --disable-download-timeout mingw-w64-i686-editrights cygrunsrv &>/dev/null"
 busybox printf "*"
-bash -lc "pacman --needed --force --noconfirm -Sdd nano dos2unix &>/dev/null"
+bash -lc "pacman --needed --force --noconfirm -S --disable-download-timeout autogen &>/dev/null"
 busybox printf "*"
-bash -lc "pacman --needed --force --noconfirm -Sdd zip unzip &>/dev/null"
+bash -lc "pacman --needed --force --noconfirm -S --disable-download-timeout automake-wrapper &>/dev/null"
+busybox printf "*"
+bash -lc "pacman --needed --force --noconfirm -S --disable-download-timeout patch patchutils &>/dev/null"
+busybox printf "*"
+bash -lc "pacman --needed --force --noconfirm -S --disable-download-timeout diffstat diffutils &>/dev/null"
+busybox printf "*"
+bash -lc "pacman --needed --force --noconfirm -S --disable-download-timeout nano dos2unix &>/dev/null"
+busybox printf "*"
+bash -lc "pacman --needed --force --noconfirm -S --disable-download-timeout zip unzip &>/dev/null"
 busybox printf "*"
 dash -c /usr/bin/rebaseall -p
 busybox printf "*"
-bash -lc "pacman --needed --force --noconfirm -Sdd make &>/dev/null"
+bash -lc "pacman --needed --force --noconfirm -S --disable-download-timeout make &>/dev/null"
 busybox printf "*"
-bash -lc "pacman --needed --force --noconfirm -Sdd cmake &>/dev/null"
+bash -lc "pacman --needed --force --noconfirm -S --disable-download-timeout cmake &>/dev/null"
 busybox printf "*"
-bash -lc "pacman --needed --force --noconfirm -Sdd vim &>/dev/null"
+bash -lc "pacman --needed --force --noconfirm -S --disable-download-timeout vim &>/dev/null"
 busybox printf "*"
-bash -lc "pacman --needed --force --noconfirm -Sdd cscope &>/dev/null"
+bash -lc "pacman --needed --force --noconfirm -S --disable-download-timeout cscope &>/dev/null"
 busybox printf "*\n\n"
 
 echo ----------------------------------------
@@ -172,7 +184,11 @@ echo Downloading and Installing
 echo URUS cross toolchains and dependencies...
 echo ----------------------------------------
 
-dash -c ./download_toolchain.sh
+su -c "./dash -c 'PATH=$(pwd):$PATH ./download_toolchain.sh'"
+printf "don't close any console window!\nplease wait until this process finish.\n"
+dash -c "rm -f /toolchain_download_ok.txt; timeout=1; while [ ! -e /toolchain_download_ok.txt ] && [ $timeout -le 180 ]; do printf '*' && sleep 10 $(( timeout=timeout+1 )); done"
+printf "\nok\nYou can close this window.\n"
+
 dash -c ./install_genromfs.sh
 
 busybox printf "\n"
