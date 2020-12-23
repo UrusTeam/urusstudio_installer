@@ -44,6 +44,8 @@ export MSYS=winsymlinks:nativestrict
 
 cd /
 
+rm -f /toolchain_download_ok.txt
+
 if [ $RETOK != 0 ] ; then
     printf "MD5 ok!\n"
     sleep 2
@@ -69,6 +71,7 @@ if [ $RETOK != 0 ] ; then
     printf "*\n\n"
     #/busybox rm -f /mingw32/bin/aclocal*
     #/busybox rm -f /mingw32/bin/automake*
+    echo 1 > toolchain_download_ok.txt
     exit 0
 else
     #rm -rf /archives
@@ -76,6 +79,7 @@ else
     printf "MD5 doesn't match.\n"
     printf "removing temp dir and stoping intallation!\n\n\n\n"
     sleep 2
+    echo 0 > toolchain_download_ok.txt
     exit 127
 fi
 
