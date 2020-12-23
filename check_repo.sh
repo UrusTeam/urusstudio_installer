@@ -26,7 +26,7 @@
         printf "https://repo.msys2.org/msys/i686" > ./baserepo
         rm -f ../archives/msys.db
         export REPOURL=$(cat ./baserepo)
-        wget -P ../archives https://repo.msys2.org/distrib/i686/msys2-base-i686-20180531.tar.xz &>/dev/null
+        wget -P ../archives https://repo.msys2.org/distrib/i686/msys2-base-i686-20190523.tar.xz &>/dev/null
         printf "Main repo ok\n\n"
         exit 0
     fi
@@ -36,7 +36,7 @@
         printf "https://www2.futureware.at/~nickoe/msys2-mirror/msys/i686" > ./baserepo
         rm -f ../archives/msys.db
         export REPOURL=$(cat ./baserepo)
-        wget -P ../archives https://www2.futureware.at/~nickoe/msys2-mirror/distrib/i686/msys2-base-i686-20180531.tar.xz &>/dev/null
+        wget -P ../archives https://www2.futureware.at/~nickoe/msys2-mirror/distrib/i686/msys2-base-i686-20190523.tar.xz &>/dev/null
         printf "External repo ok\n\n"
         exit 0
     fi
