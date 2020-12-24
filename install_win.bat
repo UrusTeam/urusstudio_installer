@@ -184,10 +184,9 @@ echo Downloading and Installing
 echo URUS cross toolchains and dependencies...
 echo ----------------------------------------
 
-su -c "./dash -c 'PATH=$(pwd):$PATH ./download_toolchain.sh'"
-printf "don't close any console window!\nplease wait until this process finish.\n"
+su -c "./dash -c 'PATH=$(pwd):$PATH && ./download_toolchain.sh' && exit 0"
+printf "don't close any console window!\nplease wait.\n"
 dash -c "rm -f /toolchain_download_ok.txt; timeout=1; while [ ! -e /toolchain_download_ok.txt ] && [ $timeout -le 180 ]; do printf '*' && sleep 10 $(( timeout=timeout+1 )); done"
-printf "\nok\nYou can close this window.\n"
 
 dash -c ./install_genromfs.sh
 
