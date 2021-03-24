@@ -1,43 +1,67 @@
 #!/bin/sh
 umask 002
-wget -c --trust-server-names --max-redirect 5 -P /archives/ https://sourceforge.net/projects/urus-buildroot.urus.p/files/v1.0.0/host-win32-i686-mingw32.tar.gz.md5/download &>/dev/null
-printf "*"
-wget -c --trust-server-names --max-redirect 5 -P /archives/ https://sourceforge.net/projects/urus-buildroot.urus.p/files/v1.0.0/host-win32-i686-mingw32.tar.gz/download &>/dev/null
-printf "*"
-wget -c --trust-server-names --max-redirect 5 -P /archives/ https://sourceforge.net/projects/urus-buildroot.urus.p/files/v1.0.0/host-win32-avr-gcc.tar.gz.md5/download &>/dev/null
-printf "*"
-wget -c --trust-server-names --max-redirect 5 -P /archives/ https://sourceforge.net/projects/urus-buildroot.urus.p/files/v1.0.0/host-win32-avr-gcc.tar.gz/download &>/dev/null
-printf "*"
-wget -c --trust-server-names --max-redirect 5 -P /archives/ https://sourceforge.net/projects/urus-buildroot.urus.p/files/v1.0.0/wx-urus/wx-2.8-urus-msw.tar.gz.md5/download &>/dev/null
-printf "*"
-wget -c --trust-server-names --max-redirect 5 -P /archives/ https://sourceforge.net/projects/urus-buildroot.urus.p/files/v1.0.0/wx-urus/wx-2.8-urus-msw.tar.gz/download &>/dev/null
-printf "*"
-wget -c --trust-server-names --max-redirect 5 -P /archives/ https://sourceforge.net/projects/urus-buildroot.urus.p/files/v1.0.0/urusstudio/host-win32-urusstudio.tar.gz.md5/download &>/dev/null
-printf "*"
-wget -c --trust-server-names --max-redirect 5 -P /archives/ https://sourceforge.net/projects/urus-buildroot.urus.p/files/v1.0.0/urusstudio/host-win32-urusstudio.tar.gz/download &>/dev/null
-printf "*\n"
 
-cd /archives
+SERVER=https://sourceforge.net/projects/urus-buildroot.urus.p/files/v1.0.0
+OUTPUTPATH=/archives/
 
-RETOK=`md5sum -c ./host-win32-i686-mingw32.tar.gz.md5`
-if [ `printf "$RETOK" | grep -ri - -e "mingw32" | wc -l` = 0 ] ; then
-    exit 127
-fi
+FILENAMES="
+host-win32-i686-mingw32.tar.gz
+host-win32-avr-gcc.tar.gz
+wx-2.8-urus-msw.tar.gz
+host-win32-urusstudio.tar.gz
+"
 
-RETOK=`md5sum -c ./host-win32-avr-gcc.tar.gz.md5`
-if [ `printf "$RETOK" | grep -ri - -e "avr" | wc -l` = 0 ] ; then
-    exit 127
-fi
+FULLFILENAMESPATH="
+host-win32-i686-mingw32.tar.gz.md5/download
+host-win32-i686-mingw32.tar.gz/download
+host-win32-avr-gcc.tar.gz.md5/download
+host-win32-avr-gcc.tar.gz/download
+wx-urus/wx-2.8-urus-msw.tar.gz.md5/download
+wx-urus/wx-2.8-urus-msw.tar.gz/download
+urusstudio/host-win32-urusstudio.tar.gz.md5/download
+urusstudio/host-win32-urusstudio.tar.gz/download
+"
 
-RETOK=`md5sum -c ./wx-2.8-urus-msw.tar.gz.md5`
-if [ `printf "$RETOK" | grep -ri - -e "msw" | wc -l` = 0 ] ; then
-    exit 127
-fi
+mkdir -p $OUTPUTPATH
+cd $OUTPUTPATH
 
-RETOK=`md5sum -c ./host-win32-urusstudio.tar.gz.md5`
-if [ `printf "$RETOK" | grep -ri - -e "urusstudio" | wc -l` = 0 ] ; then
-    exit 127
-fi
+download_tools()
+{
+    cnt=0
+    for dltool in $FULLFILENAMESPATH
+    do
+        cnt=$((cnt+1))
+        FILEOUTPUT=$(echo $dltool | sed -r -e 's:(/download)::;' | xargs -I {} basename {})
+        printf "%02d: %s\n" $cnt $FILEOUTPUT
+        sleep 1
+        wget -c --trust-server-names --max-redirect 5 -O $FILEOUTPUT $SERVER/$dltool &>/dev/null
+    done
+}
+
+check_md5()
+{
+    cnt=0
+    for md5file in $FILENAMES
+    do
+        cnt=$((cnt+1))
+        printf "%02d: %s\n" $cnt $(printf $md5file)
+        RETOK=`md5sum -c ./$md5file.md5`
+        RETOK=$?
+        if [ $RETOK -gt 0 ] ; then
+            printf "Failed checksum on: %s\n" $md5file.md5
+            du -h $(cygpath -w $(pwd)/$md5file.md5)
+            cd /
+            echo 0 > toolchain_download_ok.txt
+            exit 127
+        fi
+    done
+}
+
+printf "\nDownloading...\n"
+download_tools
+
+printf "\nChecking MD5 files...\n"
+check_md5
 
 RETOK=1
 export MSYS=winsymlinks:nativestrict

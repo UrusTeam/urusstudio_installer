@@ -5,4 +5,6 @@ wget -O master.zip -c --trust-server-names --max-redirect 5 -P ./ https://github
 unzip -o master.zip
 rm -rf master.zip
 
+pnputil -i -a $SRCPATH/dfu-programmer-master/driver_win/atmel_usb_dfu.inf
+
 exit 0

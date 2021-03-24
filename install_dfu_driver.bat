@@ -1,13 +1,13 @@
 @echo off
 
-set PATH=%~dp0\system;%PATH%
-set PATH=%~dp0\system\usr\bin;%PATH%
+set PUSHD=%~dp0
+set PATH=%PUSHD%system;%PATH%
+set PATH=%PUSHD%system\usr\bin;%PATH%
 set SRCPATH=%~dp0
 
-IF EXIST "%SRCPATH%\system\bin\" (
+IF EXIST "%SRCPATH%system\bin\" (
 	pushd %SRCPATH%
-	dash -c ./install_dfu_driver.sh
-	pnputil -i -a %SRCPATH%\dfu-programmer-master\driver_win\atmel_usb_dfu.inf
+    su -c "./system/usr/bin/dash -c 'export SRCPATH=$(pwd); export PATH=$(pwd)/system/usr/bin:$PATH; ./install_dfu_driver.sh'"
 ) ELSE (
 	echo.
 	echo No bin folder found!

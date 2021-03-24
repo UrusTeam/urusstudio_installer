@@ -7,7 +7,7 @@ set MSYSTEM=MSYS
 chdir system/
 
 echo ----------------------------------------
-echo Downloading subsystem base...
+echo Starting Urus Studio installer...
 echo ----------------------------------------
 
 busybox sh -c "../check_repo.sh"
@@ -17,6 +17,28 @@ IF EXIST .stopinstall (
     pause
     exit 0
 )
+
+IF EXIST .upgrade_urusstudio (
+    echo Upgrading Urus Studio!
+    chdir ../upgrade_scripts
+    dash -c "export SRCPATH=$(pwd); export PATH=$(pwd)/../system/usr/bin:$PATH; ./upgrade_urusstudio.sh"
+    chdir ../system/usr/bin/
+    su -c "./dash -c 'PATH=$(pwd):$PATH && ./download_toolchain.sh' && exit 0"
+    printf "don't close any console window!\nplease wait.\n"
+    dash -c "rm -f /toolchain_download_ok.txt; timeoutcnt=1; while [ ! -e /toolchain_download_ok.txt ] && [ $timeoutcnt -le 180 ]; do printf '*' && sleep 10 $(( timeoutcnt=timeoutcnt+1 )); done && rm -f toolchain_download_ok.txt"
+    printf "\n"
+    pause
+    exit 0
+)
+
+IF EXIST .fresh_install (
+    echo Starting a fresh install!
+    busybox rm -f .fresh_install
+)
+
+echo ----------------------------------------
+echo Downloading subsystem base...
+echo ----------------------------------------
 
 rem busybox sh -c "../download_base.sh"
 
@@ -186,7 +208,7 @@ echo ----------------------------------------
 
 su -c "./dash -c 'PATH=$(pwd):$PATH && ./download_toolchain.sh' && exit 0"
 printf "don't close any console window!\nplease wait.\n"
-dash -c "rm -f /toolchain_download_ok.txt; timeout=1; while [ ! -e /toolchain_download_ok.txt ] && [ $timeout -le 180 ]; do printf '*' && sleep 10 $(( timeout=timeout+1 )); done && rm -f toolchain_download_ok.txt"
+dash -c "rm -f /toolchain_download_ok.txt; timeoutcnt=1; while [ ! -e /toolchain_download_ok.txt ] && [ $timeoutcnt -le 180 ]; do printf '*' && sleep 10 $(( timeoutcnt=timeoutcnt+1 )); done && rm -f toolchain_download_ok.txt"
 
 dash -c ./install_genromfs.sh
 
