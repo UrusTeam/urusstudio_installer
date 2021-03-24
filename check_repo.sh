@@ -22,7 +22,9 @@
         fi
     fi
 
-    if [ -e ../system/usr ] ; then
+    if [ "$CI_BUILD" = "1" ] ; then
+        printf "1" > .fresh_install
+    elif [ -e ../system/usr ] ; then
         printf "\n";
         tput setaf 3;
         printf "  WARNING: Urus Studio file structure system already installed!\n\n";
