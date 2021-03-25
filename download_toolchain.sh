@@ -4,7 +4,7 @@ umask 002
 SERVER=https://github.com/UrusTeam/urus_buildroot/releases/download
 URLCHANGELOG=https://raw.githubusercontent.com/UrusTeam/urus_buildroot/master/CHANGELOG
 OUTPUTPATH=/archives/
-export RETOK=0
+RETOK=0
 
 FILENAMES="
 HOST-i686-w64-mingw32-TGT-arm-urus-linux-gnueabihf.tar.xz;/mingw32/
@@ -47,8 +47,10 @@ download_tools()
         FILEOUTPUT=$(echo $dltool | sed -r -e 's:(/download)::;' | xargs -I {} printf {} | cut -d\; -f 1)
         printf "%02d: %s\n" $cnt $FILEOUTPUT
         sleep 1
-        wget -q --show-progress -c --trust-server-names --max-redirect 5 -O $FILEOUTPUT $URLDOWNLOAD/$(cat version.txt)/$dltool
-        wget -q --show-progress -c --trust-server-names --max-redirect 5 -O $FILEOUTPUT.md5 $URLDOWNLOAD/$(cat version.txt)/$dltool.md5
+        wget -q --show-progress -c --trust-server-names --max-redirect 5 -O $FILEOUTPUT $SERVER/$(cat version.txt)/$FILEOUTPUT
+        cnt=$((cnt+1))
+        printf "%02d: %s\n" $cnt $FILEOUTPUT.md5
+        wget -q --show-progress -c --trust-server-names --max-redirect 5 -O $FILEOUTPUT.md5 $SERVER/$(cat version.txt)/$FILEOUTPUT.md5
     done
 }
 
@@ -63,8 +65,8 @@ check_md5()
         export RETOK=`md5sum -c ./$FILEOUTPUT.md5`
         export RETOK=$?
         if [ $RETOK -gt 0 ] ; then
-            printf "Failed checksum on: %s\n" $md5file.md5
-            du -h $(cygpath -w $(pwd)/$md5file.md5)
+            printf "Failed checksum on: %s\n" $FILEOUTPUT.md5
+            du -h $(cygpath -w $(pwd)/$FILEOUTPUT.md5)
             cd /
             echo 0 > toolchain_download_ok.txt
             exit 127
