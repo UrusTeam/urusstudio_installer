@@ -10,6 +10,9 @@ echo ----------------------------------------
 echo Starting Urus Studio installer...
 echo ----------------------------------------
 
+busybox cp -f ../download_toolchain.sh usr/bin/
+busybox cp -f ../su.exe usr/bin/
+
 busybox sh -c "../check_repo.sh"
 
 IF EXIST .stopinstall (

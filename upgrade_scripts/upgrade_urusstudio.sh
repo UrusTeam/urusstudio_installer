@@ -8,3 +8,6 @@ export DESTPATH=/system/urus/lib
 
 mv -f $BASEPATH/*.dll $DESTPATH/ 2>/dev/null
 mv -f $BASEPATH/*.a $DESTPATH/ 2>/dev/null
+
+rm -rf $BASEPATH/../share/urusstudio/*.zip
+rm -rf $BASEPATH/../share/urusstudio/plugins/*
