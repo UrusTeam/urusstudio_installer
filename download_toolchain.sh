@@ -1,6 +1,8 @@
 #!/bin/sh
 umask 002
 
+export PATH=/mingw32/bin:$PATH
+
 SERVER=https://github.com/UrusTeam/urus_buildroot/releases/download
 URLCHANGELOG=https://raw.githubusercontent.com/UrusTeam/urus_buildroot/master/CHANGELOG
 OUTPUTPATH=/archives/
@@ -105,9 +107,10 @@ if [ $RETOK -eq 0 ] ; then
     sleep 2
     printf "\n Decompressing files...\n"
     decompress_file
-    /busybox cp -f /mingw32/lib/libwinpthread-1.dll ./bin/ &>/dev/null
+    LIBPTHREAD=`cygpath -u $(i686-urus-mingw32-gcc -print-sysroot) | xargs -I {} find {} -name "libwinpthread-1.dll"`
+    /busybox cp -f $LIBPTHREAD ./bin/ &>/dev/null
     printf "*"
-    /busybox cp -f /mingw32/lib/libwinpthread-1.dll ./mingw32/bin/ &>/dev/null
+    /busybox cp -f $LIBPTHREAD ./mingw32/bin/ &>/dev/null
     printf "*\n\n"
     echo 1 > toolchain_download_ok.txt
     exit 0

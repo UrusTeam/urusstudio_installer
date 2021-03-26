@@ -13,7 +13,8 @@
         printf "Remove it? (y/n): "
         read rmtmp
         if [ "$rmtmp" = "y" ] ; then
-            rm -rf ../system_temp
+            rm -rf ../system_temp &>/dev/null
+            find ../system_temp -type l | xargs -I {} rmdir -p {} &>/dev/null
             printf "\nsystem_temp removed!\n\n"
         else
             printf "1" > .stopinstall
@@ -30,7 +31,7 @@
         printf "  WARNING: Urus Studio file structure system already installed!\n\n";
         tput setaf 7;
         printf "[1] - Upgrade Urus Studio and Toolchains\n"
-        printf "[2] - Whole fresh intall\n"
+        printf "[2] - Whole fresh install\n"
         printf "[3] - Stop and exit installer\n"
         printf "\nChoose an option : "
         read nropt
